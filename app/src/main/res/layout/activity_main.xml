@@ -97,7 +97,7 @@
             android:contentDescription="@string/main.btn.settings"/>
 
         <ImageButton
-            android:id="@+id/btnSettings"
+            android:id="@+id/btnRecords"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
