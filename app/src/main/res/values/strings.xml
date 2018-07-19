@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Writing Log</string>
+    <string name="main.title">Welcome!</string>
+    <string name="main.btn.continue">Continue with an existing project</string>
+    <string name="main.btn.new">Start a new project</string>
+    <string name="main.btn.freewrite">Just Write!</string>
+    <string name="main.btn.settings">Settings</string>
+</resources>
