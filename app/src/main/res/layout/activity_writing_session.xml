@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorLightGrey"
     tools:context=".WritingSession">
 
     <TextView
@@ -16,4 +17,138 @@
         android:textColor="@color/colorMaroon"
         android:textStyle="bold"
         android:textSize="30sp" />
+
+    <View
+        android:id="@+id/sepMainTitle"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/tvWritingSessTitle"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextView
+        android:id="@+id/projName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sepMainTitle"
+        android:text="@string/sess.projName"
+        android:textColor="@color/colorBlue"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:gravity="center_horizontal"
+        android:layout_marginBottom="8dp"/>
+
+    <LinearLayout
+        android:id="@+id/sessLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/projName"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:text="@string/sess.projTimeLabel"
+            android:textColor="@color/colorBlue"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:gravity="center_horizontal"/>
+
+        <TextClock
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/sess.projTime"
+            android:gravity="center_horizontal"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorDarkGrey"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/sessLastCommentLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sessLayout1"
+        android:layout_marginBottom="8dp"
+        android:text="@string/sess.lastcommentlabel"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorBlue"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/sessLastComment"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:layout_below="@+id/sessLastCommentLabel"
+        android:background="@color/colorWhite"
+        android:text="@string/sess.lastcomment"
+        android:textColor="@color/colorDarkGrey"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:textAlignment="viewStart"
+        android:isScrollContainer="true"/>
+
+    <View
+        android:id="@+id/sepSesstime"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/sessLastComment"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="16dp"/>
+
+    <TextClock
+        android:id="@+id/sessTimer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sepSesstime"
+        android:text="@string/sess.currentTime"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorAccentRed"
+        android:gravity="center_horizontal"
+        />
+
+    <View
+        android:id="@+id/sepSesstime2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_below="@+id/sessTimer"
+        android:background="@color/colorWhite"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sepSesstime2"
+        android:layout_centerHorizontal="true"
+        android:divider="?android:dividerHorizontal">
+
+        <ImageButton
+            android:id="@+id/startSess"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorMedGrey"
+            android:src="@drawable/play_pause"
+            android:contentDescription="@string/sess.startButton"/>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@color/colorWhite"/>
+
+        <ImageButton
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:background="@color/colorMedGrey"
+            android:src="@drawable/stop_circle"
+            android:contentDescription="@string/sess.stopButton"/>
+    </LinearLayout>
+
+
+
 </RelativeLayout>
