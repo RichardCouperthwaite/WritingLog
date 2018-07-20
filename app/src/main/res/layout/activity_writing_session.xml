@@ -54,7 +54,7 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:gravity="center_horizontal"/>
 
-        <TextClock
+        <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -76,18 +76,22 @@
         android:textColor="@color/colorBlue"
         android:gravity="center_horizontal" />
 
-    <TextView
+    <EditText
         android:id="@+id/sessLastComment"
         android:layout_width="match_parent"
         android:layout_height="250dp"
-        android:scrollbarAlwaysDrawVerticalTrack="true"
         android:layout_below="@+id/sessLastCommentLabel"
         android:background="@color/colorWhite"
+        android:focusable="false"
+        android:inputType="text"
+        android:isScrollContainer="true"
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
         android:text="@string/sess.lastcomment"
-        android:textColor="@color/colorDarkGrey"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textAlignment="viewStart"
-        android:isScrollContainer="true"/>
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+        android:textColor="@color/colorDarkGrey"
+        android:hint="@string/sess.lastSessComm"/>
 
     <View
         android:id="@+id/sepSesstime"
@@ -98,7 +102,7 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"/>
 
-    <TextClock
+    <TextView
         android:id="@+id/sessTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
