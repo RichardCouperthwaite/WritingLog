@@ -7,30 +7,9 @@
     tools:context=".Settings">
 
     <TextView
-        android:id="@+id/tvSettingsTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:gravity="center_horizontal"
-        android:text="@string/set.title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorMaroon"
-        android:textStyle="bold"
-        android:textSize="30sp" />
-
-    <View
-        android:id="@+id/sepMainTitle"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tvSettingsTitle"
-        android:background="@color/colorWhite"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/sepMainTitle"
+        android:layout_marginTop="16dp"
         android:text="Settings Go Here"/>
 
 </RelativeLayout>

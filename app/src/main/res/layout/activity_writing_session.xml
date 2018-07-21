@@ -7,31 +7,10 @@
     tools:context=".WritingSession">
 
     <TextView
-        android:id="@+id/tvWritingSessTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:gravity="center_horizontal"
-        android:text="@string/Sess.title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorMaroon"
-        android:textStyle="bold"
-        android:textSize="30sp" />
-
-    <View
-        android:id="@+id/sepMainTitle"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tvWritingSessTitle"
-        android:background="@color/colorWhite"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="16dp"/>
-
-    <TextView
         android:id="@+id/projName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sepMainTitle"
+        android:layout_marginTop="16dp"
         android:text="@string/sess.projName"
         android:textColor="@color/colorBlue"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
@@ -83,15 +62,18 @@
         android:layout_below="@+id/sessLastCommentLabel"
         android:background="@color/colorWhite"
         android:focusable="false"
-        android:inputType="text"
+        android:hint="@string/sess.lastSessComm"
+        android:inputType="textMultiLine"
         android:isScrollContainer="true"
+        android:scrollHorizontally="false"
+        android:scrollbarAlwaysDrawHorizontalTrack="false"
         android:scrollbarStyle="insideInset"
         android:scrollbars="vertical"
+        android:singleLine="false"
         android:text="@string/sess.lastcomment"
         android:textAlignment="viewStart"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
-        android:textColor="@color/colorDarkGrey"
-        android:hint="@string/sess.lastSessComm"/>
+        android:textColor="@color/colorDarkGrey" />
 
     <View
         android:id="@+id/sepSesstime"
@@ -152,7 +134,6 @@
             android:src="@drawable/stop_circle"
             android:contentDescription="@string/sess.stopButton"/>
     </LinearLayout>
-
 
 
 </RelativeLayout>

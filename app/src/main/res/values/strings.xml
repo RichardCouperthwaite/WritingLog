@@ -1,23 +1,49 @@
 <resources>
     <string name="app_name">Writing Log</string>
-    <string name="main.title">Welcome!</string>
+    <string name="main.title">Howdy!</string>
     <string name="main.btn.continue">Continue with an existing project</string>
     <string name="main.btn.new">Start a new project</string>
     <string name="main.btn.freewrite">Just Write!</string>
     <string name="main.btn.settings">Settings</string>
     <string name="main.btn.reports">Writing Statistics</string>
     <string name="main.btn.projList">Project List</string>
-    <string name="title_activity_writing_session">WritingSession</string>
-    <string name="title_activity_new_project">newProject</string>
+    <string name="title_activity_writing_session">Current Writing Session</string>
+    <string name="title_activity_new_project">Create New Project</string>
     <string name="title_activity_settings">Settings</string>
     <string name="title_activity_statistics">Statistics</string>
-    <string name="title_activity_project_list">ProjectList</string>
+    <string name="title_activity_project_list">Project List</string>
     <string name="Sess.title">Current Writing Session</string>
     <string name="sess.projTimeLabel">Current Time spent on Project</string>
     <string name="sess.projName">Project Name Goes Here</string>
     <string name="sess.projTime">00:00</string>
     <string name="sess.lastcommentlabel">Last Comment on Project:</string>
-    <string name="sess.lastcomment">Last Comment goes here</string>
+    <string name="sess.lastcomment">Last Comment goes here\n
+    __\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    asdf\n
+    This is a really long line of text to see how the textview deals with strings that are longer than the width of the view</string>
     <string name="sess.currentTime">00:00</string>
     <string name="sess.startButton">Start or pause current session</string>
     <string name="sess.stopButton">Finish current session</string>

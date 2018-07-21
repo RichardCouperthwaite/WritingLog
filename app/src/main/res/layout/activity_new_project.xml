@@ -6,36 +6,15 @@
     android:background="@color/colorLightGrey"
     tools:context=".newProject">
 
-    <TextView
-        android:id="@+id/tvNewProjTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="serif"
-        android:gravity="center_horizontal"
-        android:text="@string/newP.title"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="@color/colorMaroon"
-        android:textStyle="bold"
-        android:textSize="30sp" />
-
-    <View
-        android:id="@+id/sepMainTitle"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_below="@+id/tvNewProjTitle"
-        android:background="@color/colorWhite"
-        android:layout_marginTop="4dp"
-        android:layout_marginBottom="16dp"/>
-
     <EditText
         android:id="@+id/etProjName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/sepMainTitle"
         android:gravity="center_horizontal"
         android:hint="@string/newP.hint.projName"
         android:inputType="text"
         android:background="@color/colorWhite"
+        android:layout_marginTop="16dp"
         android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"/>
