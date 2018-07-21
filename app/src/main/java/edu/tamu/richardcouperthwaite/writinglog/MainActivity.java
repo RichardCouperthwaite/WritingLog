@@ -22,4 +22,19 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, newProject.class);
         startActivity(intent);
     }
+
+    public void viewProjectList(View view) {
+        Intent intent = new Intent(this, ProjectList.class);
+        startActivity(intent);
+    }
+
+    public void viewStatistics(View view) {
+        Intent intent = new Intent(this, Statistics.class);
+        startActivity(intent);
+    }
+
+    public void viewSettings(View view) {
+        Intent intent = new Intent(this, Settings.class);
+        startActivity(intent);
+    }
 }

@@ -24,7 +24,10 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
         </activity>
-        <activity android:name=".newProject"></activity>
+        <activity android:name=".newProject" />
+        <activity android:name=".ProjectList" />
+        <activity android:name=".Statistics" />
+        <activity android:name=".Settings" />
     </application>
 
 </manifest>

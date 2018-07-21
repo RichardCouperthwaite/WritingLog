@@ -5,7 +5,7 @@
     <string name="main.btn.new">Start a new project</string>
     <string name="main.btn.freewrite">Just Write!</string>
     <string name="main.btn.settings">Settings</string>
-    <string name="main.btn.reports">Report on Writing activity</string>
+    <string name="main.btn.reports">Writing Statistics</string>
     <string name="main.btn.projList">Project List</string>
     <string name="title_activity_writing_session">WritingSession</string>
     <string name="Sess.title">Current Writing Session</string>
@@ -13,36 +13,7 @@
     <string name="sess.projName">Project Name Goes Here</string>
     <string name="sess.projTime">00:00</string>
     <string name="sess.lastcommentlabel">Last Comment on Project:</string>
-    <string name="sess.lastcomment">Last Comment goes here \n
-    This value is the last comment that\n
-    has been made on the project\n
-    and gives the user an idea of \n
-    what they planned to work on at\n
-    the end of the last writing session\n
-    this does not mean that they have to work on it\n
-    but at least they can have an idea for where\n
-    to start if they so wish to take the hint\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    ...\n
-    This is to check\n
-    whether the scroll container actually can scroll</string>
+    <string name="sess.lastcomment">Last Comment goes here</string>
     <string name="sess.currentTime">00:00</string>
     <string name="sess.startButton">Start or pause current session</string>
     <string name="sess.stopButton">Finish current session</string>
@@ -53,5 +24,10 @@
     <string name="newP.hint.projDate">Enter Project Due Date</string>
     <string name="newP.btn.CreateandStartSess">Start Writing Session with New Project</string>
     <string name="newP.btn.CreateReturn">Create Project and Return to Main Menu</string>
+    <string name="projList.title">Project List</string>
+
+    <string name="stats.title">Writing Statistics</string>
+
+    <string name="set.title">Settings</string>
 
 </resources>

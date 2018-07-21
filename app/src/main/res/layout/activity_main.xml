@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -95,8 +94,9 @@
             android:layout_height="32dp"
             android:layout_weight="1"
             android:background="@color/colorLightGrey"
-            android:src="@drawable/format_list_checkbox"
-            android:contentDescription="@string/main.btn.projList"/>
+            android:contentDescription="@string/main.btn.projList"
+            android:onClick="viewProjectList"
+            android:src="@drawable/format_list_checkbox" />
 
         <ImageButton
             android:id="@+id/btnRecords"
@@ -104,8 +104,9 @@
             android:layout_height="32dp"
             android:layout_weight="1"
             android:background="@color/colorLightGrey"
-            android:src="@drawable/chart_bar"
-            android:contentDescription="@string/main.btn.reports"/>
+            android:contentDescription="@string/main.btn.reports"
+            android:onClick="viewStatistics"
+            android:src="@drawable/chart_bar" />
 
         <ImageButton
             android:id="@+id/btnSettings"
@@ -113,8 +114,9 @@
             android:layout_height="32dp"
             android:layout_weight="1"
             android:background="@color/colorLightGrey"
-            android:src="@drawable/settings_outline"
-            android:contentDescription="@string/main.btn.settings"/>
+            android:contentDescription="@string/main.btn.settings"
+            android:onClick="viewSettings"
+            android:src="@drawable/settings_outline" />
     </LinearLayout>
 
 </RelativeLayout>
