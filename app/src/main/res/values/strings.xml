@@ -45,4 +45,11 @@
     <string name="sess.startButton">Start or pause current session</string>
     <string name="sess.stopButton">Finish current session</string>
     <string name="sess.lastSessComm">Comments from last session to assist the user</string>
+    <string name="newP.title">Create New Project</string>
+    <string name="newP.hint.projName">Enter Project Name</string>
+    <string name="newP.hint.projDesc">Enter Project Description</string>
+    <string name="newP.hint.projDate">Enter Project Due Date</string>
+    <string name="newP.btn.CreateandStartSess">Start Writing Session with New Project</string>
+    <string name="newP.btn.CreateReturn">Create Project and Return to Main Menu</string>
+
 </resources>

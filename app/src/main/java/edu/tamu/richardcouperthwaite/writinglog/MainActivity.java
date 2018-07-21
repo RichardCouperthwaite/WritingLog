@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WritingSession.class);
         startActivity(intent);
     }
+
+    public void createNewProject(View view) {
+        Intent intent = new Intent(this, newProject.class);
+        startActivity(intent);
+    }
 }
