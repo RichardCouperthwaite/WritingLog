@@ -90,13 +90,13 @@
         android:divider="?android:dividerHorizontal">
 
         <ImageButton
-            android:id="@+id/btnSettings"
+            android:id="@+id/btnProjectList"
             android:layout_width="0dp"
             android:layout_height="32dp"
             android:layout_weight="1"
             android:background="@color/colorLightGrey"
-            android:src="@drawable/settings_outline"
-            android:contentDescription="@string/main.btn.settings"/>
+            android:src="@drawable/format_list_checkbox"
+            android:contentDescription="@string/main.btn.projList"/>
 
         <ImageButton
             android:id="@+id/btnRecords"
@@ -105,6 +105,15 @@
             android:layout_weight="1"
             android:background="@color/colorLightGrey"
             android:src="@drawable/chart_bar"
+            android:contentDescription="@string/main.btn.reports"/>
+
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="0dp"
+            android:layout_height="32dp"
+            android:layout_weight="1"
+            android:background="@color/colorLightGrey"
+            android:src="@drawable/settings_outline"
             android:contentDescription="@string/main.btn.settings"/>
     </LinearLayout>
 

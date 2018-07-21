@@ -5,6 +5,8 @@
     <string name="main.btn.new">Start a new project</string>
     <string name="main.btn.freewrite">Just Write!</string>
     <string name="main.btn.settings">Settings</string>
+    <string name="main.btn.reports">Report on Writing activity</string>
+    <string name="main.btn.projList">Project List</string>
     <string name="title_activity_writing_session">WritingSession</string>
     <string name="Sess.title">Current Writing Session</string>
     <string name="sess.projTimeLabel">Current Time spent on Project</string>
