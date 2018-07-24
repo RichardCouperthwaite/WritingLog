@@ -12,6 +12,8 @@
         android:layout_height="50dp"
         android:gravity="center_vertical"
         android:textAlignment="center"
+        android:textStyle="bold"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:hint="@string/newP.hint.projName"
         android:inputType="text"
         android:background="@color/colorWhite"

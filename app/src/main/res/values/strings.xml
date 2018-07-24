@@ -17,33 +17,7 @@
     <string name="sess.projName">Project Name Goes Here</string>
     <string name="sess.projTime">00:00</string>
     <string name="sess.lastcommentlabel">Last Comment on Project:</string>
-    <string name="sess.lastcomment">Last Comment goes here\n
-    __\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    asdf\n
-    This is a really long line of text to see how the textview deals with strings that are longer than the width of the view</string>
+    <string name="sess.lastcomment">Last Comment goes here</string>
     <string name="sess.currentTime">00:00</string>
     <string name="sess.startButton">Start or pause current session</string>
     <string name="sess.stopButton">Finish current session</string>
@@ -51,7 +25,7 @@
     <string name="newP.title">Create New Project</string>
     <string name="newP.hint.projName">Enter Project Name</string>
     <string name="newP.hint.projDesc">Enter Project Description</string>
-    <string name="newP.hint.projDate">Enter Project Due Date</string>
+    <string name="newP.hint.projDate">Enter Project Due Date (MM/DD/YYYY)</string>
     <string name="newP.btn.CreateandStartSess">Start Writing Session with New Project</string>
     <string name="newP.btn.CreateReturn">Create Project and Return to Main Menu</string>
     <string name="projList.title">Project List</string>
@@ -59,5 +33,8 @@
     <string name="stats.title">Writing Statistics</string>
 
     <string name="set.title">Settings</string>
+    <string name="set.label.weekstart">Select first day of the week</string>
+    <string name="set.rb.weekstart.sunday">Sunday</string>
+    <string name="set.rb.weekstart.monday">Monday</string>
 
 </resources>
