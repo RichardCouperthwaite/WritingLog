@@ -7,11 +7,11 @@ public class project {
     String Title;
     String Description;
     int totalTime;
-    Date duedate;
+    String duedate;
     String lastComment;
-    ArrayList allComments;
+    String allComments;
 
-    public project(String title, String description, int totalTime, Date duedate, String lastComment, ArrayList allComments) {
+    public project(String title, String description, int totalTime, String duedate, String lastComment, String allComments) {
         this.Title = title;
         this.Description = description;
         this.totalTime = totalTime;
@@ -44,11 +44,11 @@ public class project {
         this.totalTime = totalTime;
     }
 
-    public Date getDuedate() {
+    public String getDuedate() {
         return duedate;
     }
 
-    public void setDuedate(Date duedate) {
+    public void setDuedate(String duedate) {
         this.duedate = duedate;
     }
 
@@ -60,11 +60,11 @@ public class project {
         this.lastComment = lastComment;
     }
 
-    public ArrayList getAllComments() {
+    public String getAllComments() {
         return allComments;
     }
 
-    public void setAllComments(ArrayList allComments) {
+    public void setAllComments(String allComments) {
         this.allComments = allComments;
     }
 }
