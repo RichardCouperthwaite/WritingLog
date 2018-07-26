@@ -37,4 +37,7 @@
     <string name="set.rb.weekstart.sunday">Sunday</string>
     <string name="set.rb.weekstart.monday">Monday</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

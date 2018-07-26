@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,48 +17,48 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".newProject"
+            android:name=".activities.newProject"
             android:label="@string/title_activity_new_project"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
+                android:value="edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity" />
         </activity>
         />
         <activity
-            android:name=".ProjectList"
+            android:name=".activities.ProjectList"
             android:label="@string/title_activity_project_list"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
+                android:value="edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity" />
         </activity>
         />
         <activity
-            android:name=".Statistics"
+            android:name=".activities.Statistics"
             android:label="@string/title_activity_statistics"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
+                android:value="edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity" />
         </activity>
         />
         <activity
-            android:name=".Settings"
+            android:name=".activities.Settings"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
+                android:value="edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity" />
         </activity>
         />
         <activity
-            android:name=".WritingSession"
+            android:name=".activities.WritingSession"
             android:label="@string/title_activity_writing_session"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="edu.tamu.richardcouperthwaite.writinglog.MainActivity" />
+                android:value="edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity" />
         </activity>
     </application>
 

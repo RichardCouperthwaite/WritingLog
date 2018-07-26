@@ -1,7 +1,9 @@
-package edu.tamu.richardcouperthwaite.writinglog;
+package edu.tamu.richardcouperthwaite.writinglog.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import edu.tamu.richardcouperthwaite.writinglog.R;
 
 public class Statistics extends AppCompatActivity {
 
