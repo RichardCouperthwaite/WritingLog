@@ -33,7 +33,7 @@
     <string name="stats.title">Writing Statistics</string>
 
     <string name="set.title">Settings</string>
-    <string name="set.label.weekstart">Select first day of the week</string>
+    <string name="set.label.weekstart">Select first day of the week:</string>
     <string name="set.rb.weekstart.sunday">Sunday</string>
     <string name="set.rb.weekstart.monday">Monday</string>
 
