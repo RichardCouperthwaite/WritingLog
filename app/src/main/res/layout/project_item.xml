@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/cvProjectList"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/activity_vertical_margin"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:background="@color/colorLightGrey">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorLightGrey">
+
+        <TextView
+            android:id="@+id/tvProjectTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_small_margin"
+            android:layout_marginStart="@dimen/activity_small_margin"
+            android:maxLength="20"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="@color/colorMaroon"
+            android:text="@string/project_title"
+            android:layout_centerVertical="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/tvProjectOverview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvProjectTitle"
+            android:layout_marginTop="@dimen/activity_small_margin"
+            android:layout_marginStart="@dimen/activity_small_margin"
+            android:layout_alignParentStart="true"
+            android:maxLength="190"
+            android:text="@string/this_is_a_sample_project_description"
+            android:textColor="@color/colorMedGrey"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_below="@+id/tvProjectOverview"
+            android:minHeight="@dimen/ButtonHeight">
+
+            <ImageButton
+                android:id="@+id/ibedit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_edit_black_24dp"
+                android:contentDescription="@string/ib_editproj"
+                android:layout_marginTop="@dimen/activity_small_margin"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:background="@color/colorTan"
+                android:layout_weight="1"
+                android:minHeight="@dimen/ButtonHeight"
+                />
+
+            <ImageButton
+                android:id="@+id/ibarchive"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_archive_black_24dp"
+                android:contentDescription="@string/ib_archive_project"
+                android:layout_marginTop="@dimen/activity_small_margin"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:background="@color/colorTan"
+                android:layout_weight="1"
+                android:minHeight="@dimen/ButtonHeight"
+                />
+
+            <ImageButton
+                android:id="@+id/ibstart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_open_in_new_black_24dp"
+                android:contentDescription="@string/ib_start_new_session"
+                android:layout_marginTop="@dimen/activity_small_margin"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+                android:layout_marginBottom="@dimen/activity_small_margin"
+                android:background="@color/colorTan"
+                android:layout_weight="1"
+                android:minHeight="@dimen/ButtonHeight"
+                android:onClick="goToSession"
+                />
+
+
+
+
+        </LinearLayout>
+
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>
