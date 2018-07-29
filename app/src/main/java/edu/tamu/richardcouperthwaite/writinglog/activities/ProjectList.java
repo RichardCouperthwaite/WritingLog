@@ -44,4 +44,9 @@ public class ProjectList extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void editProjectDetails(View view) {
+        Intent intent = new Intent(this, editProjectDetails.class);
+        startActivity(intent);
+    }
+
 }

@@ -60,6 +60,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
+        <activity
+            android:name=".activities.editProjectDetails"
+            android:label="@string/editprojTitle"
+            android:parentActivityName=".activities.ProjectList">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.ProjectList" />
+        </activity>
     </application>
 
 </manifest>

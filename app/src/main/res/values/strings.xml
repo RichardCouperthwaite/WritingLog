@@ -37,12 +37,11 @@
     <string name="set.rb.weekstart.sunday">Sunday</string>
     <string name="set.rb.weekstart.monday">Monday</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="project_title">Project Title</string>
     <string name="this_is_a_sample_project_description">This is a sample project descriptioni</string>
     <string name="ib_editproj">Edit Project Details</string>
     <string name="ib_archive_project">Archive Project</string>
     <string name="ib_start_new_session">Start New Session</string>
+    <string name="editprojTitle">Edit Project Details</string>
 
 </resources>

@@ -51,15 +51,15 @@
                 android:id="@+id/ibedit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_edit_black_24dp"
-                android:contentDescription="@string/ib_editproj"
-                android:layout_marginTop="@dimen/activity_small_margin"
-                android:layout_marginEnd="@dimen/activity_small_margin"
                 android:layout_marginBottom="@dimen/activity_small_margin"
-                android:background="@color/colorTan"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+                android:layout_marginTop="@dimen/activity_small_margin"
                 android:layout_weight="1"
+                android:background="@color/colorTan"
+                android:contentDescription="@string/ib_editproj"
                 android:minHeight="@dimen/ButtonHeight"
-                />
+                android:onClick="editProjectDetails"
+                android:src="@drawable/ic_edit_black_24dp" />
 
             <ImageButton
                 android:id="@+id/ibarchive"

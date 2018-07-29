@@ -91,17 +91,6 @@
         android:minHeight="@dimen/ButtonHeight">
 
         <ImageButton
-            android:id="@+id/btnProjectList"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_weight="1"
-            android:background="@color/colorLightGrey"
-            android:contentDescription="@string/main.btn.projList"
-            android:onClick="viewProjectList"
-            android:src="@drawable/format_list_checkbox"
-            android:minHeight="@dimen/ButtonHeight"/>
-
-        <ImageButton
             android:id="@+id/btnRecords"
             android:layout_width="0dp"
             android:layout_height="32dp"
