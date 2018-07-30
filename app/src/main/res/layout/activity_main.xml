@@ -32,14 +32,15 @@
         android:layout_width="match_parent"
         android:layout_height="96dp"
         android:layout_below="@+id/sepMainTitle"
-        android:background="@color/colorDarkGrey"
-        android:text="@string/main.btn.continue"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        android:textColor="@color/colorWhite"
-        android:layout_marginTop="4dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
+        android:layout_marginTop="4dp"
+        android:background="@color/colorDarkGrey"
+        android:onClick="viewProjectList"
+        android:text="@string/main.btn.continue"
+        android:textColor="@color/colorWhite"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnNew"
@@ -86,17 +87,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@+id/sepSettings"
-        android:divider="?android:dividerHorizontal">
-
-        <ImageButton
-            android:id="@+id/btnProjectList"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_weight="1"
-            android:background="@color/colorLightGrey"
-            android:contentDescription="@string/main.btn.projList"
-            android:onClick="viewProjectList"
-            android:src="@drawable/format_list_checkbox" />
+        android:divider="?android:dividerHorizontal"
+        android:minHeight="@dimen/ButtonHeight">
 
         <ImageButton
             android:id="@+id/btnRecords"
@@ -106,7 +98,8 @@
             android:background="@color/colorLightGrey"
             android:contentDescription="@string/main.btn.reports"
             android:onClick="viewStatistics"
-            android:src="@drawable/chart_bar" />
+            android:src="@drawable/chart_bar"
+            android:minHeight="@dimen/ButtonHeight"/>
 
         <ImageButton
             android:id="@+id/btnSettings"
@@ -116,7 +109,8 @@
             android:background="@color/colorLightGrey"
             android:contentDescription="@string/main.btn.settings"
             android:onClick="viewSettings"
-            android:src="@drawable/settings_outline" />
+            android:src="@drawable/settings_outline"
+            android:minHeight="@dimen/ButtonHeight"/>
     </LinearLayout>
 
 </RelativeLayout>
