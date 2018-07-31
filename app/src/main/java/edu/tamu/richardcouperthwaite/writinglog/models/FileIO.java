@@ -59,7 +59,7 @@ public class FileIO {
         ArrayList<String> stats = new ArrayList<String>();
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, "statistics.json"));
-            JSONArray projArray = obj.getJSONArray("projects");
+            JSONArray projArray = obj.getJSONArray("statistics");
             JSONObject projDetail = projArray.getJSONObject(0);
             stats.add(projDetail.getString("currentweektime"));
             stats.add(projDetail.getString("currentweekdays"));
