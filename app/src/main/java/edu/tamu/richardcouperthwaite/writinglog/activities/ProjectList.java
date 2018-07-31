@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import butterknife.ButterKnife;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.fragments.projectlist_fragment;
 
@@ -16,7 +17,6 @@ public class ProjectList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_project_list);
-
         showFragment(projectlist_fragment.class);
     }
 
@@ -38,6 +38,7 @@ public class ProjectList extends AppCompatActivity {
                 .commit();
 
     }
+
 
     public void goToSession(View view) {
         Intent intent = new Intent(this, WritingSession.class);

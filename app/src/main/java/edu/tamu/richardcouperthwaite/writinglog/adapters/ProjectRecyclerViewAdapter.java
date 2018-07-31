@@ -1,6 +1,7 @@
 package edu.tamu.richardcouperthwaite.writinglog.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,17 +13,19 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
+import edu.tamu.richardcouperthwaite.writinglog.activities.WritingSession;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
 
 public class ProjectRecyclerViewAdapter extends RecyclerView.Adapter<ProjectRecyclerViewAdapter.ViewHolder> {
 
-    List<Project> movies;
+    List<Project> projects;
     Context context;
 
     public ProjectRecyclerViewAdapter(Context context, List<Project> movies){
-        this.movies = movies;
+        this.projects = movies;
         this.context = context;
 
     }
@@ -42,7 +45,7 @@ public class ProjectRecyclerViewAdapter extends RecyclerView.Adapter<ProjectRecy
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Project project = movies.get(position);
+        Project project = projects.get(position);
 
         holder.tvTitle.setText(project.getTitle());
         holder.tvOverview.setText(project.getOverview());
@@ -52,7 +55,7 @@ public class ProjectRecyclerViewAdapter extends RecyclerView.Adapter<ProjectRecy
 
     @Override
     public int getItemCount() {
-        return movies.size();
+        return projects.size();
     }
 
     public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -73,6 +76,15 @@ public class ProjectRecyclerViewAdapter extends RecyclerView.Adapter<ProjectRecy
         @Override
         public void onClick(View view) {
 
+        }
+
+        @OnClick(R.id.ibstart)
+        public void startSesswithProject() {
+            Project project = projects.get(getAdapterPosition());
+
+            Intent intent = new Intent(getContext(), WritingSession.class);
+            intent.putExtra("PROJECT", project);
+            getContext().startActivity(intent);
         }
     }
 }
