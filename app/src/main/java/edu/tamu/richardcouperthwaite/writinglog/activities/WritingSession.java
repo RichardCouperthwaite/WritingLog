@@ -1,7 +1,10 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
+import android.graphics.Color;
+import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -29,6 +32,8 @@ public class WritingSession extends AppCompatActivity {
     TextView comment;
     @BindView(R.id.projTime)
     TextView projTime;
+    @BindView(R.id.sessTimer)
+    Chronometer timer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,8 +52,16 @@ public class WritingSession extends AppCompatActivity {
             projTime.setText(timeSpent);
         }
 
+        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+            @Override
+            public void onChronometerTick(Chronometer chronometer) {
+                timer = chronometer;
+            }
+        });
 
     }
+
+
 
     @OnClick(R.id.startSess)
     public void startSession() {
@@ -60,6 +73,9 @@ public class WritingSession extends AppCompatActivity {
         String timearray[] = starttime.split(":");
         hourstart = Integer.parseInt(timearray[0]);
         minutestart = Integer.parseInt(timearray[1]);
+        timer.setTextColor(Color.parseColor("#5B6236"));
+        timer.setBase(SystemClock.elapsedRealtime());
+        timer.start();
     }
 
     @OnClick(R.id.endSess)
@@ -71,5 +87,6 @@ public class WritingSession extends AppCompatActivity {
         hourend = Integer.parseInt(timearray[0]);
         minuteend = Integer.parseInt(timearray[1]);
         totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
+        timer.stop();
     }
 }

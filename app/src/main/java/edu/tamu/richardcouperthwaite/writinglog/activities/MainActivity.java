@@ -5,18 +5,25 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
+import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
 public class MainActivity extends AppCompatActivity {
+    Project freewriteproject = new Project("", "Just Write Session", "", "No Comments from last session.", 0, "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
     }
 
+    @OnClick(R.id.btnFreeWrite)
     public void goToSession(View view) {
         Intent intent = new Intent(this, WritingSession.class);
+        intent.putExtra("PROJECT", freewriteproject);
         startActivity(intent);
     }
 
