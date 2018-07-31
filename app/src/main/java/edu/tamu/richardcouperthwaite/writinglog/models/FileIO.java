@@ -32,7 +32,7 @@ public class FileIO {
     public static ArrayList<Project> getProjectDetails(Context context) {
         ArrayList<Project> Projects = new ArrayList<Project>();
         try {
-            JSONObject obj = new JSONObject(loadJSONFromAsset(context));
+            JSONObject obj = new JSONObject(loadJSONFromAsset(context, "project_list.json"));
             JSONArray projArray = obj.getJSONArray("projects");
             for (int i = 0; i < projArray.length(); i++) {
                 JSONObject projDetail = projArray.getJSONObject(i);
@@ -55,10 +55,33 @@ public class FileIO {
         return Projects;
     }
 
-    public static String loadJSONFromAsset(Context context) {
+    public static ArrayList<String> getStatisticDetails(Context context) {
+        ArrayList<String> stats = new ArrayList<String>();
+        try {
+            JSONObject obj = new JSONObject(loadJSONFromAsset(context, "statistics.json"));
+            JSONArray projArray = obj.getJSONArray("projects");
+            JSONObject projDetail = projArray.getJSONObject(0);
+            stats.add(projDetail.getString("currentweektime"));
+            stats.add(projDetail.getString("currentweekdays"));
+            stats.add(projDetail.getString("prevweektime"));
+            stats.add(projDetail.getString("prevweekdays"));
+            stats.add(projDetail.getString("currentmonthtime"));
+            stats.add(projDetail.getString("currentmonthdays"));
+            stats.add(projDetail.getString("prevmonthtime"));
+            stats.add(projDetail.getString("prevmonthdays"));
+            stats.add(projDetail.getString("weekstartdate"));
+            stats.add(projDetail.getString("monthstartdate"));
+        }
+        catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return stats;
+    }
+
+    public static String loadJSONFromAsset(Context context, String filename) {
         String json = null;
         try {
-            InputStream is = context.getAssets().open("project_list.json");
+            InputStream is = context.getAssets().open(filename);
             int size = is.available();
             byte[] buffer = new byte[size];
             is.read(buffer);

@@ -118,7 +118,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/colorMedGrey"
-            android:src="@drawable/play_pause"
+            android:src="@drawable/ic_play_circle_filled_black_24dp"
             android:contentDescription="@string/sess.startButton"/>
 
         <View
