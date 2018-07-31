@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/activity_small_margin"
             android:layout_marginStart="@dimen/activity_small_margin"
-            android:maxLength="20"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="@color/colorMaroon"
             android:text="@string/project_title"
@@ -35,7 +34,6 @@
             android:layout_marginTop="@dimen/activity_small_margin"
             android:layout_marginStart="@dimen/activity_small_margin"
             android:layout_alignParentStart="true"
-            android:maxLength="190"
             android:text="@string/this_is_a_sample_project_description"
             android:textColor="@color/colorMedGrey"
             />

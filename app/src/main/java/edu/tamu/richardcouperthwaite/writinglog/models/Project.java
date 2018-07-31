@@ -7,13 +7,15 @@ public class Project implements Serializable {
     String id;
     String title;
     String overview;
+    String lastcomment;
     int timespent;
     String duedate;
 
-    public Project(String id, String title, String overview, int timespent, String duedate) {
+    public Project(String id, String title, String overview, String lastcomment, int timespent, String duedate) {
         this.id = id;
         this.title = title;
         this.overview = overview;
+        this.lastcomment = lastcomment;
         this.timespent = timespent;
         this.duedate = duedate;
     }
@@ -40,6 +42,14 @@ public class Project implements Serializable {
 
     public void setOverview(String overview) {
         this.overview = overview;
+    }
+
+    public String getLastcomment() {
+        return lastcomment;
+    }
+
+    public void setLastcomment(String lastcomment) {
+        this.lastcomment = lastcomment;
     }
 
     public int getTimespent() {
