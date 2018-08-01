@@ -1,10 +1,15 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.SystemClock;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Chronometer;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
@@ -26,6 +31,7 @@ public class WritingSession extends AppCompatActivity {
     int minuteend;
     int totaltime;
     Project project;
+    String newComment;
     @BindView(R.id.projName)
     TextView projName;
     @BindView(R.id.sessLastComment)
@@ -88,5 +94,41 @@ public class WritingSession extends AppCompatActivity {
         minuteend = Integer.parseInt(timearray[1]);
         totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
         timer.stop();
+        newComment = getComment();
+        comment.setText(newComment);
+
+        //Intent intent = new Intent(this, MainActivity.class);
+        //startActivity(intent);
+    }
+
+    private String getComment() {
+        final String[] newcomment = {""};
+        AlertDialog.Builder builder = new AlertDialog.Builder(WritingSession.this);
+        builder.setTitle("Enter comments for next session:");
+
+        // Set up the input
+        final EditText input = new EditText(WritingSession.this);
+        // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+        input.setInputType(InputType.TYPE_CLASS_TEXT);
+        builder.setView(input);
+
+        // Set up the buttons
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                newcomment[0] = input.getText().toString();
+            }
+        });
+        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+                newcomment[0] = "";
+            }
+        });
+
+        builder.show();
+
+        return newcomment[0];
     }
 }
