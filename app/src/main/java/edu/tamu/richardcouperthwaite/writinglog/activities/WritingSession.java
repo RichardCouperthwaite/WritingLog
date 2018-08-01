@@ -31,7 +31,8 @@ public class WritingSession extends AppCompatActivity {
     int minuteend;
     int totaltime;
     Project project;
-    String newComment;
+    String commentInput = "This is the predefined text";
+    Boolean SessStart = false;
     @BindView(R.id.projName)
     TextView projName;
     @BindView(R.id.sessLastComment)
@@ -82,28 +83,29 @@ public class WritingSession extends AppCompatActivity {
         timer.setTextColor(Color.parseColor("#5B6236"));
         timer.setBase(SystemClock.elapsedRealtime());
         timer.start();
+        SessStart = true;
     }
 
     @OnClick(R.id.endSess)
     public void endSession() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
-        endtime = timeFormat.format(calendar.getTime());
-        String timearray[] = endtime.split(":");
-        hourend = Integer.parseInt(timearray[0]);
-        minuteend = Integer.parseInt(timearray[1]);
-        totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
-        timer.stop();
-        newComment = getComment();
-        comment.setText(newComment);
+        if (SessStart) {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            endtime = timeFormat.format(calendar.getTime());
+            String timearray[] = endtime.split(":");
+            hourend = Integer.parseInt(timearray[0]);
+            minuteend = Integer.parseInt(timearray[1]);
+            totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
+            timer.stop();
+            getComment();
 
-        //Intent intent = new Intent(this, MainActivity.class);
-        //startActivity(intent);
+            //Intent intent = new Intent(this, MainActivity.class);
+            //startActivity(intent);
+        }
     }
 
-    private String getComment() {
-        final String[] newcomment = {""};
-        AlertDialog.Builder builder = new AlertDialog.Builder(WritingSession.this);
+    private void getComment() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(WritingSession.this, R.style.DialogTheme);
         builder.setTitle("Enter comments for next session:");
 
         // Set up the input
@@ -113,22 +115,22 @@ public class WritingSession extends AppCompatActivity {
         builder.setView(input);
 
         // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton("Save", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-                newcomment[0] = input.getText().toString();
+            public void onClick(DialogInterface dialog, int id) {
+                commentInput = input.getText().toString();
+                comment.setText(commentInput);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(DialogInterface dialog, int id) {
                 dialog.cancel();
-                newcomment[0] = "";
+                commentInput = "";
+                comment.setText(commentInput);
             }
         });
 
         builder.show();
-
-        return newcomment[0];
     }
 }
