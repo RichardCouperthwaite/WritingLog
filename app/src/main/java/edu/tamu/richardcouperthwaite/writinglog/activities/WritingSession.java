@@ -1,5 +1,6 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
@@ -20,6 +21,9 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
+
+import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.saveSessionData;
+import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.updateStatistics;
 
 public class WritingSession extends AppCompatActivity {
     String starttime;
@@ -68,8 +72,6 @@ public class WritingSession extends AppCompatActivity {
 
     }
 
-
-
     @OnClick(R.id.startSess)
     public void startSession() {
         Calendar calendar = Calendar.getInstance();
@@ -97,16 +99,14 @@ public class WritingSession extends AppCompatActivity {
             minuteend = Integer.parseInt(timearray[1]);
             totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
             timer.stop();
-            getComment();
-
-            //Intent intent = new Intent(this, MainActivity.class);
-            //startActivity(intent);
+            getComment(this);
         }
     }
 
-    private void getComment() {
+    private void getComment(final Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(WritingSession.this, R.style.DialogTheme);
         builder.setTitle("Enter comments for next session:");
+        builder.setCancelable(false);
 
         // Set up the input
         final EditText input = new EditText(WritingSession.this);
@@ -120,17 +120,21 @@ public class WritingSession extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 commentInput = input.getText().toString();
                 comment.setText(commentInput);
-            }
-        });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int id) {
-                dialog.cancel();
-                commentInput = "";
-                comment.setText(commentInput);
+
+                saveData();
+
+                Intent intent = new Intent(context, MainActivity.class);
+                startActivity(intent);
             }
         });
 
         builder.show();
+    }
+
+    private void saveData() {
+        String SessionSummary = String.format("%s | %s | %s | %d | %s | %s \n", date, starttime, endtime, totaltime, project.getTitle(), commentInput);
+        project.setLastcomment(commentInput);
+        saveSessionData(project, SessionSummary);
+        updateStatistics(totaltime, date, this);
     }
 }

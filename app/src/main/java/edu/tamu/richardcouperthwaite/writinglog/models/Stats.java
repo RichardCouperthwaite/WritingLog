@@ -1,5 +1,14 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
+import java.text.DateFormat;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class Stats {
     private int dayscurrentweek;
     private int daysprevweek;
@@ -83,5 +92,28 @@ public class Stats {
 
     public void setTimesprevmonth(float timesprevmonth) {
         this.timesprevmonth = timesprevmonth;
+    }
+
+    public static ArrayList<Integer> getDayIndices(String date, String weekstart, String monthstart) {
+        ArrayList<Integer> days = new ArrayList<Integer>();
+        String current[] = date.split("/");
+        String week[] = weekstart.split("/");
+        String month[] = monthstart.split("/");
+        if (current[0].equals(month[0])) {
+            days.add(0);
+            days.add(Integer.getInteger(current[1])-1);
+        } else {
+            days.add(1);
+            days.add(Integer.getInteger(current[1])-1);
+        }
+
+        Calendar calendar = GregorianCalendar.getInstance();
+        Calendar calendar2 = GregorianCalendar.getInstance();
+        calendar.set(2018,0,1);
+        calendar2.set(2018,0,8);
+        int Daydif = calendar2.get(Calendar.DAY_OF_YEAR)- calendar.get(Calendar.DAY_OF_YEAR);
+        int DIM = calendar.getActualMaximum(calendar.DAY_OF_MONTH);
+
+        return days;
     }
 }

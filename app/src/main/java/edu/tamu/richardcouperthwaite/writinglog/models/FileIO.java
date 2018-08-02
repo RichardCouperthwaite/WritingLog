@@ -2,6 +2,8 @@ package edu.tamu.richardcouperthwaite.writinglog.models;
 
 import android.content.Context;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -59,18 +61,20 @@ public class FileIO {
         ArrayList<String> stats = new ArrayList<String>();
         try {
             JSONObject obj = new JSONObject(loadJSONFromAsset(context, "statistics.json"));
-            JSONArray projArray = obj.getJSONArray("statistics");
-            JSONObject projDetail = projArray.getJSONObject(0);
-            stats.add(projDetail.getString("currentweektime"));
-            stats.add(projDetail.getString("currentweekdays"));
-            stats.add(projDetail.getString("prevweektime"));
-            stats.add(projDetail.getString("prevweekdays"));
-            stats.add(projDetail.getString("currentmonthtime"));
-            stats.add(projDetail.getString("currentmonthdays"));
-            stats.add(projDetail.getString("prevmonthtime"));
-            stats.add(projDetail.getString("prevmonthdays"));
-            stats.add(projDetail.getString("weekstartdate"));
-            stats.add(projDetail.getString("monthstartdate"));
+            JSONArray statArray = obj.getJSONArray("statistics");
+            JSONObject statDetail = statArray.getJSONObject(0);
+            stats.add(statDetail.getString("currentweektime"));
+            stats.add(statDetail.getString("currentweekdays"));
+            stats.add(statDetail.getString("prevweektime"));
+            stats.add(statDetail.getString("prevweekdays"));
+            stats.add(statDetail.getString("currentmonthtime"));
+            stats.add(statDetail.getString("currentmonthdays"));
+            stats.add(statDetail.getString("prevmonthtime"));
+            stats.add(statDetail.getString("prevmonthdays"));
+            stats.add(statDetail.getString("weekstartdate"));
+            stats.add(statDetail.getString("monthstartdate"));
+            stats.add(statDetail.getString("weekdayList"));
+            stats.add(statDetail.getString("monthdayList"));
         }
         catch (JSONException e) {
             e.printStackTrace();
@@ -92,5 +96,22 @@ public class FileIO {
             return null;
         }
         return json;
+    }
+
+    public static void saveSessionData(Project project, String summary) {
+        try {
+            BufferedWriter out = new BufferedWriter(
+                    new FileWriter("logData.csv", true));
+            out.write(summary);
+            out.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static void updateStatistics(int SessionTime, String date, Context context) {
+        ArrayList<String> stats = getStatisticDetails(context);
     }
 }
