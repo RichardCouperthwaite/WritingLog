@@ -1,18 +1,14 @@
 {
-  "statistics": [
-    {
-      "currentweektime": "10",
-      "currentweekdays": "3/7",
-      "prevweektime": "15",
-      "prevweekdays" : "5/7",
-      "currentmonthtime": "20",
-      "currentmonthdays": "10/31",
-      "prevmonthtime": "45",
-      "prevmonthdays" : "20/30",
-      "weekstartdate": "7/30/2018",
-      "monthstartdate": "7/1/2018",
-      "weekdayList": "0,0,0,0,0,0,0",
-      "monthdayList": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
-    }
-  ]
+    "currentweektime": "10",
+    "currentweekdays": "3/7",
+    "prevweektime": "15",
+    "prevweekdays" : "5/7",
+    "currentmonthtime": "20",
+    "currentmonthdays": "10/31",
+    "prevmonthtime": "45",
+    "prevmonthdays" : "20/30",
+    "weekstartdate": "7/30/2018",
+    "monthstartdate": "7/1/2018",
+    "weekdayList": "0,0,0,0,0,0,0",
+    "monthdayList": "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"
 }

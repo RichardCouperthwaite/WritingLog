@@ -99,20 +99,40 @@ public class Stats {
         String current[] = date.split("/");
         String week[] = weekstart.split("/");
         String month[] = monthstart.split("/");
-        if (current[0].equals(month[0])) {
-            days.add(0);
+        if (Integer.getInteger(current[0]) - Integer.getInteger(month[0]) > 1) {
+            days.add(2);
+            days.add(Integer.getInteger(current[1])-1);
+        } else if (Integer.getInteger(current[0]) - Integer.getInteger(month[0]) > 0){
+            days.add(1);
             days.add(Integer.getInteger(current[1])-1);
         } else {
-            days.add(1);
+            days.add(0);
             days.add(Integer.getInteger(current[1])-1);
         }
 
-        Calendar calendar = GregorianCalendar.getInstance();
-        Calendar calendar2 = GregorianCalendar.getInstance();
-        calendar.set(2018,0,1);
-        calendar2.set(2018,0,8);
-        int Daydif = calendar2.get(Calendar.DAY_OF_YEAR)- calendar.get(Calendar.DAY_OF_YEAR);
-        int DIM = calendar.getActualMaximum(calendar.DAY_OF_MONTH);
+        Calendar currentDate = GregorianCalendar.getInstance();
+        Calendar weekstartDate = GregorianCalendar.getInstance();
+        currentDate.set(Integer.getInteger(current[2]),(Integer.getInteger(current[0])-1),Integer.getInteger(current[1]));
+        weekstartDate.set(Integer.getInteger(week[2]),(Integer.getInteger(week[0])-1),Integer.getInteger(week[1]));
+        int Daydif = currentDate.get(Calendar.DAY_OF_YEAR)- weekstartDate.get(Calendar.DAY_OF_YEAR);
+
+        if (Daydif > 13) {
+            days.add(2);
+        } else if (Daydif > 6) {
+            days.add(1);
+        } else {
+            days.add(0);
+        }
+        Calendar monthcheck = currentDate;
+        days.add(currentDate.get(Calendar.DAY_OF_WEEK)-1);
+        currentDate.add(Calendar.DATE, -currentDate.get(Calendar.DAY_OF_WEEK));
+        days.add(currentDate.get(Calendar.DATE));
+        days.add(currentDate.get(Calendar.MONTH));
+        days.add(currentDate.get(Calendar.YEAR));
+
+        days.add(monthcheck.getActualMaximum(Calendar.DAY_OF_MONTH));
+        monthcheck.add(Calendar.MONTH, -1);
+        days.add(monthcheck.getActualMaximum(Calendar.DAY_OF_MONTH));
 
         return days;
     }

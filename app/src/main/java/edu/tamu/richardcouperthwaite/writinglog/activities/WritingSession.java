@@ -99,6 +99,7 @@ public class WritingSession extends AppCompatActivity {
             minuteend = Integer.parseInt(timearray[1]);
             totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
             timer.stop();
+            SessStart = false;
             getComment(this);
         }
     }
@@ -132,9 +133,9 @@ public class WritingSession extends AppCompatActivity {
     }
 
     private void saveData() {
-        String SessionSummary = String.format("%s | %s | %s | %d | %s | %s \n", date, starttime, endtime, totaltime, project.getTitle(), commentInput);
+        String SessionSummary = String.format("%s,%s,%s,%d,\"%s\",\"%s\" \n", date, starttime, endtime, totaltime, project.getTitle(), commentInput);
         project.setLastcomment(commentInput);
-        saveSessionData(project, SessionSummary);
+        saveSessionData(SessionSummary, this);
         updateStatistics(totaltime, date, this);
     }
 }
