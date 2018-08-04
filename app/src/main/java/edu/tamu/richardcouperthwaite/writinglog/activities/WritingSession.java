@@ -113,6 +113,7 @@ public class WritingSession extends AppCompatActivity {
         final EditText input = new EditText(WritingSession.this);
         // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
         input.setInputType(InputType.TYPE_CLASS_TEXT);
+        input.setHint("Comments...");
         builder.setView(input);
 
         // Set up the buttons
@@ -121,8 +122,6 @@ public class WritingSession extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 commentInput = input.getText().toString();
                 comment.setText(commentInput);
-
-                saveData();
 
                 Intent intent = new Intent(context, MainActivity.class);
                 startActivity(intent);
@@ -133,9 +132,6 @@ public class WritingSession extends AppCompatActivity {
     }
 
     private void saveData() {
-        String SessionSummary = String.format("%s,%s,%s,%d,\"%s\",\"%s\" \n", date, starttime, endtime, totaltime, project.getTitle(), commentInput);
-        project.setLastcomment(commentInput);
-        saveSessionData(SessionSummary, this);
-        updateStatistics(totaltime, date, this);
+
     }
 }

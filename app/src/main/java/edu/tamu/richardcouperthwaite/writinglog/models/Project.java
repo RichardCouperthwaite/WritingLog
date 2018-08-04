@@ -1,76 +1,72 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
-@Entity(tableName = "projects")
-public class Project {
-    @PrimaryKey(autoGenerate = true)
-    private int projID;
+import java.io.Serializable;
 
-    @ColumnInfo(name = "Title")
-    private String projectTitle;
+public class Project implements Serializable {
+    String ID;
+    String Title;
+    String Overview;
+    String Lastcomment;
+    int Timespent;
+    String dueDate;
 
-    @ColumnInfo(name = "Description")
-    private String projectDescription;
-
-    @ColumnInfo(name = "Time")
-    private int projecttime;
-
-    @ColumnInfo(name = "LastComment")
-    private String projectLastComment;
-
-    @ColumnInfo(name = "DueDate")
-    private String projectDueDate;
-
-
-
-    public int getProjID() {
-        return projID;
+    public Project(String ID, String title, String overview, String lastcomment, int timespent, String dueDate) {
+        this.ID = ID;
+        Title = title;
+        Overview = overview;
+        Lastcomment = lastcomment;
+        Timespent = timespent;
+        this.dueDate = dueDate;
     }
 
-    public void setProjID(int projID) {
-        this.projID = projID;
+    public String getID() {
+        return ID;
     }
 
-    public String getProjectTitle() {
-        return projectTitle;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
-    public void setProjectTitle(String projectTitle) {
-        this.projectTitle = projectTitle;
+    public String getTitle() {
+        return Title;
     }
 
-    public String getProjectDescription() {
-        return projectDescription;
+    public void setTitle(String title) {
+        Title = title;
     }
 
-    public void setProjectDescription(String projectDescription) {
-        this.projectDescription = projectDescription;
+    public String getOverview() {
+        return Overview;
     }
 
-    public int getProjecttime() {
-        return projecttime;
+    public void setOverview(String overview) {
+        Overview = overview;
     }
 
-    public void setProjecttime(int projecttime) {
-        this.projecttime = projecttime;
+    public String getLastcomment() {
+        return Lastcomment;
     }
 
-    public String getProjectLastComment() {
-        return projectLastComment;
+    public void setLastcomment(String lastcomment) {
+        Lastcomment = lastcomment;
     }
 
-    public void setProjectLastComment(String projectLastComment) {
-        this.projectLastComment = projectLastComment;
+    public int getTimespent() {
+        return Timespent;
     }
 
-    public String getProjectDueDate() {
-        return projectDueDate;
+    public void setTimespent(int timespent) {
+        Timespent = timespent;
     }
 
-    public void setProjectDueDate(String projectDueDate) {
-        this.projectDueDate = projectDueDate;
+    public String getDueDate() {
+        return dueDate;
     }
+
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
+    }
+
+
 }

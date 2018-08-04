@@ -8,11 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+    <!-- "Theme.AppCompat.Light.Dialog.Alert"   -->
+
+    <style name="DialogTheme" parent="Theme.AppCompat.DayNight.Dialog">
         <!-- Customize your theme here. -->
         <item name="android:colorForeground">@color/colorPrimary</item>
-        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item> -->
-        <!--<item name="colorAccent">@color/colorAccent</item> -->
     </style>
 
 
