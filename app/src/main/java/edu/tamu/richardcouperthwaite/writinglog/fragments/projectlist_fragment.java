@@ -1,6 +1,7 @@
 package edu.tamu.richardcouperthwaite.writinglog.fragments;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -18,6 +19,7 @@ import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.adapters.ProjectRecyclerViewAdapter;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
+import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.getProjectDetails;
 
 
 /**
@@ -41,7 +43,7 @@ public class projectlist_fragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_projectlist, container, false);
         ButterKnife.bind(this, view);
 
-        initializeData();
+        initializeData(this.getContext());
 
         LinearLayoutManager llm = new LinearLayoutManager(this.getContext());
 
@@ -54,17 +56,8 @@ public class projectlist_fragment extends Fragment {
         return view;
     }
 
-    private void initializeData() {
-
-        projects = new ArrayList<>();
-        projects.add(new Project("1", "Project 1", "This is a sample project", 15, "7/8/2018"));
-        projects.add(new Project("2", "Project 2", "This is a sample project", 25, "7/8/2018"));
-        projects.add(new Project("3", "Project 3", "This is a sample project", 35, "7/8/2018"));
-        projects.add(new Project("4", "Project 4", "This is a sample project", 45, "7/8/2018"));
-        projects.add(new Project("5", "Project 5", "This is a sample project", 55, "7/8/2018"));
-        projects.add(new Project("6", "Project 6", "This is a sample project", 65, "7/8/2018"));
-
-
+    private void initializeData(Context context) {
+        projects = getProjectDetails(context);
     }
 
 }

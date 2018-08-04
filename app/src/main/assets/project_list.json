@@ -1,0 +1,31 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "Title": "Qualifying Exam Report",
+      "Description": "Report for the qualifying exam",
+      "LastComment" : "First draft of intro done, need to work on getting the equations for the SVM section done so that I can complete the section on how the method works.",
+      "Time": 10,
+      "DueDate": "24/8/2018",
+      "Archive": 0
+    },
+    {
+      "id": "2",
+      "Title": "Journal article on Thermodynamic Modeling",
+      "Description": "Journal article detailing the results from the thermodynamic modeling that has been done",
+      "LastComment" : "Go through feedback on methods section and correct.",
+      "Time": 5,
+      "DueDate": "24/12/2018",
+      "Archive": 0
+    },
+    {
+      "id": "3",
+      "Title": "Article with modeling and experimental results",
+      "Description": "Journal article matching thermodynamic modeling with experimental results",
+      "LastComment" : "",
+      "Time": 0,
+      "DueDate": "24/11/2018",
+      "Archive": 0
+    }
+    ]
+}

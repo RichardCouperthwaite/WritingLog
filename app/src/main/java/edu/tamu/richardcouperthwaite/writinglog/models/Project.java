@@ -1,60 +1,72 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
+
 import java.io.Serializable;
 
 public class Project implements Serializable {
+    String ID;
+    String Title;
+    String Overview;
+    String Lastcomment;
+    int Timespent;
+    String dueDate;
 
-    String id;
-    String title;
-    String overview;
-    int timespent;
-    String duedate;
-
-    public Project(String id, String title, String overview, int timespent, String duedate) {
-        this.id = id;
-        this.title = title;
-        this.overview = overview;
-        this.timespent = timespent;
-        this.duedate = duedate;
+    public Project(String ID, String title, String overview, String lastcomment, int timespent, String dueDate) {
+        this.ID = ID;
+        Title = title;
+        Overview = overview;
+        Lastcomment = lastcomment;
+        Timespent = timespent;
+        this.dueDate = dueDate;
     }
 
-    public String getId() {
-        return id;
+    public String getID() {
+        return ID;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setID(String ID) {
+        this.ID = ID;
     }
 
     public String getTitle() {
-        return title;
+        return Title;
     }
 
     public void setTitle(String title) {
-        this.title = title;
+        Title = title;
     }
 
     public String getOverview() {
-        return overview;
+        return Overview;
     }
 
     public void setOverview(String overview) {
-        this.overview = overview;
+        Overview = overview;
+    }
+
+    public String getLastcomment() {
+        return Lastcomment;
+    }
+
+    public void setLastcomment(String lastcomment) {
+        Lastcomment = lastcomment;
     }
 
     public int getTimespent() {
-        return timespent;
+        return Timespent;
     }
 
     public void setTimespent(int timespent) {
-        this.timespent = timespent;
+        Timespent = timespent;
     }
 
-    public String getDuedate() {
-        return duedate;
+    public String getDueDate() {
+        return dueDate;
     }
 
-    public void setDuedate(String duedate) {
-        this.duedate = duedate;
+    public void setDueDate(String dueDate) {
+        this.dueDate = dueDate;
     }
+
+
 }

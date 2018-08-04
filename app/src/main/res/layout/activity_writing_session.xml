@@ -12,8 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/sess.projName"
-        android:textColor="@color/colorBlue"
+        android:textColor="@color/colorMaroon"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textStyle="bold"
         android:gravity="center_horizontal"
         android:layout_marginBottom="8dp"/>
 
@@ -34,6 +35,7 @@
             android:gravity="center_horizontal"/>
 
         <TextView
+            android:id="@+id/projTime"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -51,7 +53,7 @@
         android:layout_below="@+id/sessLayout1"
         android:layout_marginBottom="8dp"
         android:text="@string/sess.lastcommentlabel"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
         android:textColor="@color/colorBlue"
         android:gravity="center_horizontal" />
 
@@ -71,7 +73,8 @@
         android:scrollbars="vertical"
         android:singleLine="false"
         android:text="@string/sess.lastcomment"
-        android:textAlignment="viewStart"
+        android:textAlignment="gravity"
+        android:gravity="top"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
         android:textColor="@color/colorDarkGrey" />
 
@@ -84,12 +87,11 @@
         android:layout_marginTop="4dp"
         android:layout_marginBottom="16dp"/>
 
-    <TextView
+    <Chronometer
         android:id="@+id/sessTimer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sepSesstime"
-        android:text="@string/sess.currentTime"
         android:textSize="50sp"
         android:textStyle="bold"
         android:textColor="@color/colorAccentRed"
@@ -118,7 +120,7 @@
             android:layout_height="50dp"
             android:layout_weight="1"
             android:background="@color/colorMedGrey"
-            android:src="@drawable/play_pause"
+            android:src="@drawable/ic_play_circle_filled_black_24dp"
             android:contentDescription="@string/sess.startButton"/>
 
         <View
@@ -127,6 +129,7 @@
             android:background="@color/colorWhite"/>
 
         <ImageButton
+            android:id="@+id/endSess"
             android:layout_width="0dp"
             android:layout_height="50dp"
             android:layout_weight="1"
