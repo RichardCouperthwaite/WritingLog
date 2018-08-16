@@ -22,8 +22,6 @@ import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
-import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.saveSessionData;
-import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.updateStatistics;
 
 public class WritingSession extends AppCompatActivity {
     String starttime;
@@ -55,11 +53,11 @@ public class WritingSession extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             project = (Project) extras.getSerializable("PROJECT");
-            int hours = (int) project.getTimespent()/60;
-            int minutes = project.getTimespent()-60*hours;
+            int hours = (int) project.getTime()/60;
+            int minutes = project.getTime()-60*hours;
             String timeSpent = String.format("%d:%d", hours, minutes);
-            projName.setText(project.getTitle());
-            comment.setText(project.getLastcomment());
+            projName.setText(project.getName());
+            comment.setText(project.getLastComment());
             projTime.setText(timeSpent);
         }
 

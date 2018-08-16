@@ -1,72 +1,76 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
+import android.support.annotation.NonNull;
+
 import java.io.Serializable;
 
-public class Project implements Serializable {
-    String ID;
-    String Title;
-    String Overview;
-    String Lastcomment;
-    int Timespent;
-    String dueDate;
+@Entity(tableName = "project_list")
+public class Project implements Serializable{
 
-    public Project(String ID, String title, String overview, String lastcomment, int timespent, String dueDate) {
-        this.ID = ID;
-        Title = title;
-        Overview = overview;
-        Lastcomment = lastcomment;
-        Timespent = timespent;
-        this.dueDate = dueDate;
-    }
+    @PrimaryKey
+    @NonNull
+    @ColumnInfo(typeAffinity = 3)
+    public int ID;
 
-    public String getID() {
+    @ColumnInfo(name = "project_title", typeAffinity = 2)
+    public String Name;
+    @ColumnInfo(name = "elapsed_time", typeAffinity = 3)
+    public int Time;
+    @ColumnInfo(name = "project_description", typeAffinity = 2)
+    public String Description;
+    @ColumnInfo(name = "last_comment", typeAffinity = 2)
+    public String LastComment;
+
+    @NonNull
+    public int getID() {
         return ID;
     }
 
-    public void setID(String ID) {
+    public void setID(@NonNull int ID) {
         this.ID = ID;
     }
 
-    public String getTitle() {
-        return Title;
+    public String getName() {
+        return Name;
     }
 
-    public void setTitle(String title) {
-        Title = title;
+    public void setName(String name) {
+        Name = name;
     }
 
-    public String getOverview() {
-        return Overview;
+    public int getTime() {
+        return Time;
     }
 
-    public void setOverview(String overview) {
-        Overview = overview;
+    public void setTime(int time) {
+        Time = time;
     }
 
-    public String getLastcomment() {
-        return Lastcomment;
+    public String getDescription() {
+        return Description;
     }
 
-    public void setLastcomment(String lastcomment) {
-        Lastcomment = lastcomment;
+    public void setDescription(String description) {
+        Description = description;
     }
 
-    public int getTimespent() {
-        return Timespent;
+    public String getLastComment() {
+        return LastComment;
     }
 
-    public void setTimespent(int timespent) {
-        Timespent = timespent;
+    public void setLastComment(String lastComment) {
+        LastComment = lastComment;
     }
 
-    public String getDueDate() {
-        return dueDate;
+    public Project(int ID, String Name, int Time, String Description, String LastComment) {
+        this.ID = ID;
+        this.Name = Name;
+        this.Time = Time;
+        this.Description = Description;
+        this.LastComment = LastComment;
     }
-
-    public void setDueDate(String dueDate) {
-        this.dueDate = dueDate;
-    }
-
-
 }

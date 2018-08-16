@@ -12,9 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 
-import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.getStatisticDetails;
 
-public class Statistics extends AppCompatActivity {
+public class StatisticsActivity extends AppCompatActivity {
     ArrayList<String> statslist;
     @BindView(R.id.tvcurrentdaysmonth)
     TextView tvcurrentdaysmonth;
@@ -41,9 +40,9 @@ public class Statistics extends AppCompatActivity {
         setContentView(R.layout.activity_statistics);
         ButterKnife.bind(this);
 
-        statslist = getStatisticDetails(getBaseContext());
+        //statslist = getStatisticDetails(getBaseContext());
 
-        displayData();
+        //displayData();
     }
 
     private void displayData() {

@@ -11,7 +11,7 @@ import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
 public class MainActivity extends AppCompatActivity {
-    Project freewriteproject = new Project("", "Just Write Session", "", "No Comments from last session.", 0, "");
+    Project freewriteproject = new Project(0, "Just Write Session", 0, "No Comments from last session.", "");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void viewStatistics(View view) {
-        Intent intent = new Intent(this, Statistics.class);
+        Intent intent = new Intent(this, StatisticsActivity.class);
         startActivity(intent);
     }
 

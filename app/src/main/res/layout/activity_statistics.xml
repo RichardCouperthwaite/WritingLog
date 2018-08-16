@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".activities.Statistics">
+    tools:context=".activities.StatisticsActivity">
 
     <LinearLayout
         android:id="@+id/linlayoutweekstat"

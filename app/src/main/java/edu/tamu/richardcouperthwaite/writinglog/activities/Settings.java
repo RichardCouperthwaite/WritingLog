@@ -11,7 +11,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 
-import static edu.tamu.richardcouperthwaite.writinglog.models.FileIO.getStatisticDetails;
 
 public class Settings extends AppCompatActivity {
     ArrayList<String> statistics;
@@ -41,9 +40,9 @@ public class Settings extends AppCompatActivity {
         Context context = this;
         ButterKnife.bind(this);
 
-        statistics = getStatisticDetails(context);
+        //statistics = getStatisticDetails(context);
 
-        updateTextViewFields();
+        //updateTextViewFields();
     }
 
     private void updateTextViewFields() {
