@@ -77,16 +77,15 @@
                 android:id="@+id/ibstart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ic_open_in_new_black_24dp"
-                android:contentDescription="@string/ib_start_new_session"
-                android:layout_marginTop="@dimen/activity_small_margin"
-                android:layout_marginEnd="@dimen/activity_small_margin"
                 android:layout_marginBottom="@dimen/activity_small_margin"
-                android:background="@color/colorTan"
+                android:layout_marginEnd="@dimen/activity_small_margin"
+                android:layout_marginTop="@dimen/activity_small_margin"
                 android:layout_weight="1"
+                android:background="@color/colorTan"
+                android:contentDescription="@string/ib_start_new_session"
                 android:minHeight="@dimen/ButtonHeight"
-                android:onClick="goToSession"
-                />
+                android:onClick="startExistingProject"
+                android:src="@drawable/ic_open_in_new_black_24dp" />
 
 
 

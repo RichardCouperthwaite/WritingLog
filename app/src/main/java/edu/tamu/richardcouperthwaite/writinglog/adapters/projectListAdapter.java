@@ -5,22 +5,39 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
 public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.ProjectViewHolder> {
-    class ProjectViewHolder extends RecyclerView.ViewHolder {
+
+    class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView titleView;
         private final TextView description;
+        private final ImageButton startSession;
+
 
         private ProjectViewHolder(View itemView) {
             super(itemView);
             titleView = itemView.findViewById(R.id.tvProjectTitle);
             description = itemView.findViewById(R.id.tvProjectOverview);
+            startSession = itemView.findViewById(R.id.ibstart);
+
+            startSession.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            if (view.getId() == startSession.getId()) {
+                Toast.makeText(view.getContext(), "Start Session = "+ String.valueOf(getAdapterPosition()), Toast.LENGTH_SHORT).show();
+            }
+
         }
     }
 
