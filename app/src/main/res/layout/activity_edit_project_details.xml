@@ -7,7 +7,7 @@ android:background="@color/colorLightGrey"
 tools:context=".activities.editProjectDetails">
 
 <EditText
-    android:id="@+id/etProjName"
+    android:id="@+id/etEditProjName"
     android:layout_width="match_parent"
     android:layout_height="50dp"
     android:gravity="center_vertical"
@@ -23,10 +23,10 @@ tools:context=".activities.editProjectDetails">
     android:layout_marginEnd="8dp"/>
 
 <EditText
-    android:id="@+id/etProjDesc"
+    android:id="@+id/etEditProjDesc"
     android:layout_width="match_parent"
     android:layout_height="200dp"
-    android:layout_below="@+id/etProjName"
+    android:layout_below="@+id/etEditProjName"
     android:gravity="start"
     android:textAlignment="viewStart"
     android:hint="@string/newP.hint.projDesc"
@@ -38,10 +38,10 @@ tools:context=".activities.editProjectDetails">
     />
 
 <EditText
-    android:id="@+id/dtDueDate"
+    android:id="@+id/etEditDueDate"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_below="@+id/etProjDesc"
+    android:layout_below="@+id/etEditProjDesc"
     android:inputType="date"
     android:hint="@string/newP.hint.projDate"
     android:gravity="center_vertical"
@@ -52,10 +52,10 @@ tools:context=".activities.editProjectDetails">
     android:layout_marginEnd="8dp"/>
 
 <Button
-    android:id="@+id/btnCreateStart"
+    android:id="@+id/btnEditProject"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@+id/dtDueDate"
+    android:layout_below="@+id/etEditDueDate"
     android:text="Save Project Detail Changes"
     android:textColor="@color/colorWhite"
     android:textStyle="bold"

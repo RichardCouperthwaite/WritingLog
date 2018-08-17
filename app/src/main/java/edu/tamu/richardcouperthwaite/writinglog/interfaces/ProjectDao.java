@@ -4,6 +4,7 @@ import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
 
 import java.util.List;
 
@@ -20,4 +21,8 @@ public interface ProjectDao {
 
     @Query("SELECT * from project_list ORDER BY project_title ASC")
     LiveData<List<Project>> getAllProjects();
+
+    @Update
+    void updateProject(Project project);
+
 }

@@ -13,7 +13,7 @@ import edu.tamu.richardcouperthwaite.writinglog.models.Session;
 @Dao
 public interface sessionDao {
     @Insert
-    void insert(Session statistics);
+    void insert(Session session);
 
     @Query("DELETE FROM session_log")
     void deleteAll();

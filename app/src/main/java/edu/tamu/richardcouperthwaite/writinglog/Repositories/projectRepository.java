@@ -24,6 +24,8 @@ public class projectRepository {
 
     public void insert (Project project) {new insertAsyncTask(mprojectDao).execute(project); }
 
+    public void update (Project project) {new updateAsyncTask(mprojectDao).execute(project); }
+
     private static class insertAsyncTask extends AsyncTask<Project, Void, Void> {
         private ProjectDao AsyncProjectDao;
 
@@ -32,6 +34,18 @@ public class projectRepository {
         @Override
         protected Void doInBackground(final Project... params) {
             AsyncProjectDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<Project, Void, Void> {
+        private ProjectDao AsyncProjectDao;
+
+        updateAsyncTask(ProjectDao dao) {AsyncProjectDao = dao; }
+
+        @Override
+        protected Void doInBackground(final Project... params) {
+            AsyncProjectDao.updateProject(params[0]);
             return null;
         }
     }
