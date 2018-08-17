@@ -58,24 +58,7 @@ public abstract class WritingLogDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params)  {
-            projDao.deleteAll();
-            Project newProject = new Project(1,"Test Project 1", 110, "This is a test project", "No Previous comments", "");
-            projDao.insert(newProject);
-            newProject = new Project(2,"Test Project 2", 120, "This is a test project", "No Previous comments", "");
-            projDao.insert(newProject);
-            newProject = new Project(3,"Test Project 3", 130, "This is a test project", "No Previous comments", "");
-            projDao.insert(newProject);
-
-            statDao.deleteAll();
-            Statistics newStat = new Statistics("CurrWeekTime", "20");
-            statDao.insert(newStat);
-            newStat = new Statistics("CurrWeekDays", "4");
-            statDao.insert(newStat);
-            newStat = new Statistics("PrevWeekTime", "40");
-            statDao.insert(newStat);
-            newStat = new Statistics("PrevWeekDays", "6");
-            statDao.insert(newStat);
-
+            
             return null;
         }
 
