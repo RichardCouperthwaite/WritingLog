@@ -11,10 +11,10 @@ public class Statistics {
     @PrimaryKey
     @NonNull
     @ColumnInfo(name = "stat_title", typeAffinity = 2)
-    public String Title;
+    private String Title;
 
     @ColumnInfo(name = "value", typeAffinity = 2)
-    public String Value;
+    private String Value;
 
     public Statistics(@NonNull String Title, String Value) {
         this.Title = Title;

@@ -56,7 +56,6 @@
                 android:background="@color/colorTan"
                 android:contentDescription="@string/ib_editproj"
                 android:minHeight="@dimen/ButtonHeight"
-                android:onClick="editProjectDetails"
                 android:src="@drawable/ic_edit_black_24dp" />
 
             <ImageButton
@@ -84,7 +83,6 @@
                 android:background="@color/colorTan"
                 android:contentDescription="@string/ib_start_new_session"
                 android:minHeight="@dimen/ButtonHeight"
-                android:onClick="startExistingProject"
                 android:src="@drawable/ic_open_in_new_black_24dp" />
 
 

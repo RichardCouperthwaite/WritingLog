@@ -8,7 +8,14 @@ import android.arch.persistence.room.PrimaryKey;
 public class Session {
     @PrimaryKey
     @ColumnInfo(name = "Session_ID")
-    int SessionID;
+    private int SessionID;
+
+    private String Date;
+    private String Start;
+    private String End;
+    private String Total;
+    private String Project;
+    private String Comments;
 
     public int getSessionID() { return SessionID; }
 
@@ -61,13 +68,6 @@ public class Session {
     public void setComments(String comments) {
         Comments = comments;
     }
-
-    String Date;
-    String Start;
-    String End;
-    String Total;
-    String Project;
-    String Comments;
 
     public Session(int SessionID, String Date, String Start, String End, String Total, String Project, String Comments) {
         this.SessionID = SessionID;

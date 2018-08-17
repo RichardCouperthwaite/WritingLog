@@ -14,16 +14,22 @@ public class Project implements Serializable{
     @PrimaryKey
     @NonNull
     @ColumnInfo(typeAffinity = 3)
-    public int ID;
+    private int ID;
 
     @ColumnInfo(name = "project_title", typeAffinity = 2)
-    public String Name;
+    private String Name;
     @ColumnInfo(name = "elapsed_time", typeAffinity = 3)
-    public int Time;
+    private int Time;
     @ColumnInfo(name = "project_description", typeAffinity = 2)
-    public String Description;
+    private String Description;
     @ColumnInfo(name = "last_comment", typeAffinity = 2)
-    public String LastComment;
+    private String LastComment;
+    @ColumnInfo(name = "Project_Due_Date", typeAffinity = 2)
+    private String DueDate;
+
+    public String getDueDate() { return DueDate; }
+
+    public void setDueDate(String dueDate) { DueDate = dueDate; }
 
     @NonNull
     public int getID() {
@@ -66,11 +72,12 @@ public class Project implements Serializable{
         LastComment = lastComment;
     }
 
-    public Project(int ID, String Name, int Time, String Description, String LastComment) {
+    public Project(int ID, String Name, int Time, String Description, String LastComment, String DueDate) {
         this.ID = ID;
         this.Name = Name;
         this.Time = Time;
         this.Description = Description;
         this.LastComment = LastComment;
+        this.DueDate = DueDate;
     }
 }
