@@ -1,7 +1,9 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
 import android.arch.lifecycle.LiveData;
+import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -46,54 +48,61 @@ public class StatisticsActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         mstatViewModel = ViewModelProviders.of(this).get(statViewModel.class);
-        mStatList = mstatViewModel.getStatList().getValue();
-        if (mStatList != null) {
-            if (mStatList.size() != 0) {
-                displayData();
-            } else {
-                Toast.makeText(this, "No Statistics Found", Toast.LENGTH_SHORT).show();
+        mstatViewModel.getStatList().observe(this, new Observer<List<Statistics>>() {
+            @Override
+            public void onChanged(@Nullable List<Statistics> statistics) {
+                displayData(statistics);
             }
-        } else {
-            Toast.makeText(this, "Error Loading Statistics", Toast.LENGTH_SHORT).show();
-        }
+        });
+        
+        
+        //if (mStatList != null) {
+        //    if (mStatList.size() != 0) {
+        //        displayData();
+        //    } else {
+        //        Toast.makeText(this, "No Statistics Found", Toast.LENGTH_SHORT).show();
+        //    }
+        //} else {
+        //    Toast.makeText(this, "Error Loading Statistics", Toast.LENGTH_SHORT).show();
+        //}
 
     }
 
-    private void displayData() {
-        String currWT = "0";
-        String currWD = "0";
-        String prevWT = "0";
-        String prevWD = "0";
-        String currMT = "0";
-        String currMD = "0";
-        String prevMT = "0";
-        String prevMD = "0";
-        String currDIM = "0";
-        String prevDIM = "0";
+    private void displayData(List<Statistics> statistics) {
+        String currWT = "a";
+        String currWD = "a";
+        String prevWT = "a";
+        String prevWD = "a";
+        String currMT = "a";
+        String currMD = "a";
+        String prevMT = "a";
+        String prevMD = "a";
+        String currDIM = "a";
+        String prevDIM = "a";
         int currentWeekDays = 0;
         int currentMonthDays = 0;
 
-        for (int i = 0; i<mStatList.size(); i++) {
-            switch(mStatList.get(i).getTitle()) {
-                case "CurrentWeekTime":     currWT=mStatList.get(i).getValue();
+        for (int i = 0; i<statistics.size(); i++) {
+            switch(statistics.get(i).getTitle()) {
+                case "CurrentWeekTime":     currWT=statistics.get(i).getValue();
                                             break;
-                case "CurrentWeekDays":     currWD=mStatList.get(i).getValue();
+                case "CurrentWeekDays":     currWD=statistics.get(i).getValue();
                                             break;
-                case "PreviousWeekTime":    prevWT=mStatList.get(i).getValue();
+                case "PreviousWeekTime":    prevWT=statistics.get(i).getValue();
                                             break;
-                case "PreviousWeekDays":    prevWT=mStatList.get(i).getValue();
+                case "PreviousWeekDays":    prevWD=statistics.get(i).getValue();
                                             break;
-                case "CurrentMonthTime":    currMT=mStatList.get(i).getValue();
+                case "CurrentMonthTime":    currMT=statistics.get(i).getValue();
                                             break;
-                case "CurrentMonthDays":    currMD=mStatList.get(i).getValue();
+                case "CurrentMonthDays":    currMD=statistics.get(i).getValue();
                                             break;
-                case "PreviousMonthTime":   prevMT=mStatList.get(i).getValue();
+                case "PreviousMonthTime":   prevMT=statistics.get(i).getValue();
                                             break;
-                case "PreviousMonthDays":   prevMD=mStatList.get(i).getValue();
+                case "PreviousMonthDays":   prevMD=statistics.get(i).getValue();
                                             break;
-                case "CurrentDIM":  currDIM=mStatList.get(i).getValue();
+                case "CurrentDIM":  currDIM=statistics.get(i).getValue();
                                     break;
-                case "PreviousDIM": prevDIM=mStatList.get(i).getValue();
+                case "PreviousDIM": prevDIM=statistics.get(i).getValue();
                                     break;
             }
         }

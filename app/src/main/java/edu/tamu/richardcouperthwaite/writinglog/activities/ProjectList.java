@@ -27,8 +27,6 @@ public class ProjectList extends AppCompatActivity {
     RecyclerView recyclerView;
     private projViewModel mprojViewModel;
 
-    List<Project> mProjectList;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,20 +42,8 @@ public class ProjectList extends AppCompatActivity {
         mprojViewModel.getProjectList().observe(this, new Observer<List<Project>>() {
             @Override
             public void onChanged(@Nullable List<Project> projects) {
-                adapter.setProjectList(projects);
+                adapter.setProjectList(projects, mprojViewModel);
             }
         });
-
-        mProjectList = mprojViewModel.getProjectList().getValue();
-
     }
-
-    public Project startSessionProject() {
-        int Index = recyclerView.getChildLayoutPosition(recyclerView.getFocusedChild());
-        Project project = mProjectList.get(Index);
-        return project;
-    }
-
-
-
 }

@@ -1,5 +1,6 @@
 package edu.tamu.richardcouperthwaite.writinglog.adapters;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,6 +25,7 @@ import edu.tamu.richardcouperthwaite.writinglog.activities.ProjectList;
 import edu.tamu.richardcouperthwaite.writinglog.activities.WritingSession;
 import edu.tamu.richardcouperthwaite.writinglog.activities.editProjectDetails;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
+import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
 
 import static android.support.v4.content.ContextCompat.startActivities;
 import static android.support.v4.content.ContextCompat.startActivity;
@@ -61,7 +63,7 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
                 startActivity(context, intent, Bundle.EMPTY);
             } else if(view.getId() == deleteProject.getId()) {
                 Toast.makeText(view.getContext(), "Delete Project = " + mProjectList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
-                checkDelete(view.getContext());
+                checkDelete(view.getContext(), getAdapterPosition());
             } else if(view.getId() == editProject.getId()) {
                 Toast.makeText(view.getContext(), "Edit Project = " + mProjectList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), editProjectDetails.class);
@@ -75,6 +77,7 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
 
     private final LayoutInflater mInflater;
     private List<Project> mProjectList;
+    private projViewModel projViewModel;
 
     public projectListAdapter(Context context) {mInflater = LayoutInflater.from(context); }
 
@@ -96,8 +99,9 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
         }
     }
 
-    public void setProjectList(List<Project> projects){
+    public void setProjectList(List<Project> projects, projViewModel mprojViewModel){
         mProjectList = projects;
+        projViewModel = mprojViewModel;
         notifyDataSetChanged();
     }
 
@@ -108,7 +112,7 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
         else return 0;
     }
 
-    private void checkDelete(final Context context) {
+    private void checkDelete(final Context context, final int Index) {
         AlertDialog.Builder builder = new AlertDialog.Builder(context, R.style.DialogTheme);
         builder.setTitle("Are you sure you want to delete this project");
 
@@ -117,6 +121,7 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
             @Override
             public void onClick(DialogInterface dialog, int id) {
                 Toast.makeText(context, "Project Deleted", Toast.LENGTH_SHORT).show();
+                projViewModel.delete(mProjectList.get(Index));
             }
         });
 

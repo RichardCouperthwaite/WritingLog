@@ -24,4 +24,6 @@ public class projViewModel extends AndroidViewModel {
     public void insert(Project project) { mRepository.insert(project); }
 
     public void update(Project project) { mRepository.update(project); }
+
+    public void delete(Project project) { mRepository.delete(project); }
 }
