@@ -21,4 +21,6 @@ public class statViewModel extends AndroidViewModel {
     public LiveData<List<Statistics>> getStatList() { return mStatList; }
 
     public void insert(Statistics stats) { mRepository.insert(stats); }
+
+    public void update(Statistics stats) { mRepository.update(stats); }
 }

@@ -25,6 +25,8 @@ public class statsRepository {
 
     public void insert (Statistics stat) {new insertAsyncTask(mstatsDao).execute(stat); }
 
+    public void update (Statistics stat) {new updateAsyncTask(mstatsDao).execute(stat); }
+
     private static class insertAsyncTask extends AsyncTask<Statistics, Void, Void> {
         private statsDao AsyncStatsDao;
 
@@ -33,6 +35,18 @@ public class statsRepository {
         @Override
         protected Void doInBackground(final Statistics... params) {
             AsyncStatsDao.insert(params[0]);
+            return null;
+        }
+    }
+
+    private static class updateAsyncTask extends AsyncTask<Statistics, Void, Void> {
+        private statsDao AsyncStatsDao;
+
+        updateAsyncTask(statsDao dao) {AsyncStatsDao = dao; }
+
+        @Override
+        protected Void doInBackground(final Statistics... params) {
+            AsyncStatsDao.updateStats(params[0]);
             return null;
         }
     }

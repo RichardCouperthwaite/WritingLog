@@ -54,69 +54,72 @@ public class StatisticsActivity extends AppCompatActivity {
                 displayData(statistics);
             }
         });
-        
-        
-        //if (mStatList != null) {
-        //    if (mStatList.size() != 0) {
-        //        displayData();
-        //    } else {
-        //        Toast.makeText(this, "No Statistics Found", Toast.LENGTH_SHORT).show();
-        //    }
-        //} else {
-        //    Toast.makeText(this, "Error Loading Statistics", Toast.LENGTH_SHORT).show();
-        //}
-
     }
 
     private void displayData(List<Statistics> statistics) {
-        String currWT = "a";
-        String currWD = "a";
-        String prevWT = "a";
-        String prevWD = "a";
-        String currMT = "a";
-        String currMD = "a";
-        String prevMT = "a";
-        String prevMD = "a";
-        String currDIM = "a";
-        String prevDIM = "a";
+        String currWT = "0";
+        String currWD = "0,0,0,0,0,0,0";
+        String prevWT = "0";
+        String prevWD = "0";
+        String currMT = "0";
+        String currMD = "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0";
+        String prevMT = "0";
+        String prevMD = "0";
+        String currDIM = "0";
+        String prevDIM = "0";
         int currentWeekDays = 0;
         int currentMonthDays = 0;
 
-        for (int i = 0; i<statistics.size(); i++) {
-            switch(statistics.get(i).getTitle()) {
-                case "CurrentWeekTime":     currWT=statistics.get(i).getValue();
-                                            break;
-                case "CurrentWeekDays":     currWD=statistics.get(i).getValue();
-                                            break;
-                case "PreviousWeekTime":    prevWT=statistics.get(i).getValue();
-                                            break;
-                case "PreviousWeekDays":    prevWD=statistics.get(i).getValue();
-                                            break;
-                case "CurrentMonthTime":    currMT=statistics.get(i).getValue();
-                                            break;
-                case "CurrentMonthDays":    currMD=statistics.get(i).getValue();
-                                            break;
-                case "PreviousMonthTime":   prevMT=statistics.get(i).getValue();
-                                            break;
-                case "PreviousMonthDays":   prevMD=statistics.get(i).getValue();
-                                            break;
-                case "CurrentDIM":  currDIM=statistics.get(i).getValue();
-                                    break;
-                case "PreviousDIM": prevDIM=statistics.get(i).getValue();
-                                    break;
+        for (int i = 0; i < statistics.size(); i++) {
+            switch (statistics.get(i).getTitle()) {
+                case "CurrentWeekTime":
+                    currWT = statistics.get(i).getValue();
+                    break;
+                case "CurrentWeekDays":
+                    currWD = statistics.get(i).getValue();
+                    break;
+                case "PreviousWeekTime":
+                    prevWT = statistics.get(i).getValue();
+                    break;
+                case "PreviousWeekDays":
+                    prevWD = statistics.get(i).getValue();
+                    break;
+                case "CurrentMonthTime":
+                    currMT = statistics.get(i).getValue();
+                    break;
+                case "CurrentMonthDays":
+                    currMD = statistics.get(i).getValue();
+                    break;
+                case "PreviousMonthTime":
+                    prevMT = statistics.get(i).getValue();
+                    break;
+                case "PreviousMonthDays":
+                    prevMD = statistics.get(i).getValue();
+                    break;
+                case "CurrentDIM":
+                    currDIM = statistics.get(i).getValue();
+                    break;
+                case "PreviousDIM":
+                    prevDIM = statistics.get(i).getValue();
+                    break;
             }
         }
+
         String [] list1 = currMD.split(",");
-        for (String day : list1) {
-            if (day.equals("1")) {
-                currentMonthDays++;
+        if (list1.length >= 31) {
+            for (int i = 0; i < 31; i++) {
+                if (list1[i].equals("1")) {
+                    currentMonthDays++;
+                }
             }
         }
 
         String [] list2 = currWD.split(",");
-        for (String day : list2) {
-            if (day.equals("1")) {
-                currentWeekDays++;
+        if (list2.length >= 7) {
+            for (int i = 0; i < 7; i++) {
+                if (list2[i].equals("1")) {
+                    currentWeekDays++;
+                }
             }
         }
 
