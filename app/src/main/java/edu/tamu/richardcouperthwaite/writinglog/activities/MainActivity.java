@@ -45,11 +45,6 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void viewSettings(View view) {
-        Intent intent = new Intent(this, Settings.class);
-        startActivity(intent);
-    }
-
     public void startExistingProject(Project project) {
         Intent intent = new Intent(appcontext, WritingSession.class);
         intent.putExtra("PROJECT", project);

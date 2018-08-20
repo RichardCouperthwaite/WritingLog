@@ -3,20 +3,29 @@ package edu.tamu.richardcouperthwaite.writinglog.activities;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
+import edu.tamu.richardcouperthwaite.writinglog.models.Session;
 import edu.tamu.richardcouperthwaite.writinglog.models.Statistics;
+import edu.tamu.richardcouperthwaite.writinglog.models.sessionViewModel;
 import edu.tamu.richardcouperthwaite.writinglog.models.statViewModel;
 
 
@@ -39,7 +48,7 @@ public class StatisticsActivity extends AppCompatActivity {
     TextView tvprevtimeweek;
 
     private statViewModel mstatViewModel;
-    List<Statistics> mStatList;
+    private sessionViewModel msessViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +63,10 @@ public class StatisticsActivity extends AppCompatActivity {
                 displayData(statistics);
             }
         });
+
+        msessViewModel = ViewModelProviders.of(this).get(sessionViewModel.class);
+
+
     }
 
     private void displayData(List<Statistics> statistics) {
@@ -133,5 +146,45 @@ public class StatisticsActivity extends AppCompatActivity {
         tvprevdaysmonth.setText(prevMD + "/" + prevDIM);
     }
 
+    @OnClick(R.id.btnExportData)
+    public void saveLog() {
 
+        msessViewModel.getSessionList().observe(this, new Observer<List<Session>>() {
+            @Override
+            public void onChanged(@Nullable List<Session> sessions) {
+                if (isExternalStorageWritable()) {
+                    String logData = "Date, Start Time, End Time, Total Time, Project Name, End of Session Comments \n";
+                    try {
+                        for (int i = 0; i < sessions.size(); i++) {
+                            String logEntry = String.format("%s, %s, %s, %s, \"%s\",  \"%s\" \n", sessions.get(i).getDate(), sessions.get(i).getStart(), sessions.get(i).getEnd(), sessions.get(i).getTotal(), sessions.get(i).getProject(), sessions.get(i).getComments());
+                            logData += logEntry;
+                        }
+                        FileOutputStream outputStream;
+                        try {
+                            outputStream = openFileOutput("WritingLog.csv", getApplicationContext().MODE_PRIVATE);
+                            outputStream.write(logData.getBytes());
+                            outputStream.close();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        Toast.makeText(getApplicationContext(), "Writing Log Exported", Toast.LENGTH_LONG).show();
+
+                    } catch (Exception e) {
+                        Toast.makeText(getApplicationContext(), "No Data in Writing Log: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Could not save data at this time", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+    }
+
+    public boolean isExternalStorageWritable() {
+        String state = Environment.getExternalStorageState();
+        if (Environment.MEDIA_MOUNTED.equals(state)) {
+            return true;
+        }
+        return false;
+    }
 }
