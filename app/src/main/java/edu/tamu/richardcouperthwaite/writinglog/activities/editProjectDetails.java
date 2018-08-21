@@ -37,9 +37,11 @@ public class editProjectDetails extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(projViewModel.class);
         if (extras != null) {
             project = (Project) extras.getSerializable("PROJECT");
-            EditProjectName.setText(project.getName());
-            EditProjectDescription.setText(project.getDescription());
-            EditProjectDate.setText(project.getDueDate());
+            if (project != null) {
+                EditProjectName.setText(project.getName());
+                EditProjectDescription.setText(project.getDescription());
+                EditProjectDate.setText(project.getDueDate());
+            }
         }
     }
 

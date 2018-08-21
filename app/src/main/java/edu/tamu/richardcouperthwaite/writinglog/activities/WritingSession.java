@@ -15,12 +15,12 @@ import android.text.InputType;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -85,24 +85,26 @@ public class WritingSession extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             project = (Project) extras.getSerializable("PROJECT");
-            int hours = project.getTime()/60;
-            int minutes = project.getTime()-60*hours;
-            String hoursstring;
-            String minutesstring;
-            if (hours<10) {
-                hoursstring = "0"+hours;
-            } else {
-                hoursstring = ""+hours;
+            if (project!=null) {
+                int hours = project.getTime() / 60;
+                int minutes = project.getTime() - 60 * hours;
+                String hoursstring;
+                String minutesstring;
+                if (hours < 10) {
+                    hoursstring = "0" + hours;
+                } else {
+                    hoursstring = "" + hours;
+                }
+                if (minutes < 10) {
+                    minutesstring = "0" + minutes;
+                } else {
+                    minutesstring = "" + minutes;
+                }
+                String timeSpent = String.format("%s:%s", hoursstring, minutesstring);
+                projName.setText(project.getName());
+                comment.setText(project.getLastComment());
+                projTime.setText(timeSpent);
             }
-            if (minutes<10) {
-                minutesstring = "0"+minutes;
-            } else {
-                minutesstring = ""+minutes;
-            }
-            String timeSpent = String.format("%s:%s", hoursstring, minutesstring);
-            projName.setText(project.getName());
-            comment.setText(project.getLastComment());
-            projTime.setText(timeSpent);
         }
 
         timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
@@ -123,8 +125,8 @@ public class WritingSession extends AppCompatActivity {
     @OnClick(R.id.startSess)
     public void startSession() {
         Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
         date = dateFormat.format(calendar.getTime());
         starttime = timeFormat.format(calendar.getTime());
         String timearray[] = starttime.split(":");
@@ -140,7 +142,7 @@ public class WritingSession extends AppCompatActivity {
     public void endSession() {
         if (SessStart) {
             Calendar calendar = Calendar.getInstance();
-            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm");
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
             endtime = timeFormat.format(calendar.getTime());
             String timearray[] = endtime.split(":");
             hourend = Integer.parseInt(timearray[0]);
@@ -190,32 +192,46 @@ public class WritingSession extends AppCompatActivity {
     }
 
     private void updateStats(List<Statistics> statistics) {
-        for (int i = 0; i<statistics.size(); i++) {
-            switch(statistics.get(i).getTitle()) {
-                case "CurrentWeekTime":     currWT=statistics.get(i).getValue();
-                                            break;
-                case "CurrentWeekDays":     currWD=statistics.get(i).getValue();
-                                            break;
-                case "CurrentMonthTime":    currMT=statistics.get(i).getValue();
-                                            break;
-                case "CurrentMonthDays":    currMD=statistics.get(i).getValue();
-                                            break;
-                case "WeekStart":   weekstart=statistics.get(i).getValue();
-                                    break;
-                case "MonthStart":  monthstart=statistics.get(i).getValue();
-                                    break;
-                case "PreviousWeekTime":    prevWT=statistics.get(i).getValue();
-                    break;
-                case "PreviousWeekDays":    prevWD=statistics.get(i).getValue();
-                    break;
-                case "PreviousMonthTime":   prevMT=statistics.get(i).getValue();
-                    break;
-                case "PreviousMonthDays":   prevMD=statistics.get(i).getValue();
-                    break;
-                case "CurrentDIM":  currDIM=statistics.get(i).getValue();
-                    break;
-                case "PreviousDIM": prevDIM=statistics.get(i).getValue();
-                    break;
+        if (statistics!=null) {
+            for (int i = 0; i < statistics.size(); i++) {
+                switch (statistics.get(i).getTitle()) {
+                    case "CurrentWeekTime":
+                        currWT = statistics.get(i).getValue();
+                        break;
+                    case "CurrentWeekDays":
+                        currWD = statistics.get(i).getValue();
+                        break;
+                    case "CurrentMonthTime":
+                        currMT = statistics.get(i).getValue();
+                        break;
+                    case "CurrentMonthDays":
+                        currMD = statistics.get(i).getValue();
+                        break;
+                    case "WeekStart":
+                        weekstart = statistics.get(i).getValue();
+                        break;
+                    case "MonthStart":
+                        monthstart = statistics.get(i).getValue();
+                        break;
+                    case "PreviousWeekTime":
+                        prevWT = statistics.get(i).getValue();
+                        break;
+                    case "PreviousWeekDays":
+                        prevWD = statistics.get(i).getValue();
+                        break;
+                    case "PreviousMonthTime":
+                        prevMT = statistics.get(i).getValue();
+                        break;
+                    case "PreviousMonthDays":
+                        prevMD = statistics.get(i).getValue();
+                        break;
+                    case "CurrentDIM":
+                        currDIM = statistics.get(i).getValue();
+                        break;
+                    case "PreviousDIM":
+                        prevDIM = statistics.get(i).getValue();
+                        break;
+                }
             }
         }
     }
@@ -279,13 +295,15 @@ public class WritingSession extends AppCompatActivity {
             prevWD = "" + count;
             prevWT = currWT;
             currWT = "0";
-            weekstart = String.format("%d/%d/%d", nowdate1.get(Calendar.MONTH), nowdate1.get(Calendar.DATE), nowdate1.get(Calendar.YEAR));
+            weekstart = String.format(Locale.US, "%d/%d/%d", nowdate1.get(Calendar.MONTH), nowdate1.get(Calendar.DATE), nowdate1.get(Calendar.YEAR));
         }
         weekdays[dayofWeek] = "1";
-        currWD = "";
+        StringBuilder newWDString = new StringBuilder("");
         for (int i=0; i<7; i++) {
-            currWD += weekdays[i] + ",";
+            newWDString.append(weekdays[i]);
+            newWDString.append(",");
         }
+        currWD = newWDString.toString();
         int presentWeekTime = Integer.parseInt(currWT);
         presentWeekTime += totaltime;
         currWT = "" + presentWeekTime;
@@ -302,13 +320,15 @@ public class WritingSession extends AppCompatActivity {
             prevMT = currMT;
             currMT = "0";
             prevDIM = currDIM;
-            monthstart = String.format("%d/%d/%d", nowdate2.get(Calendar.MONTH), nowdate2.get(Calendar.DATE), nowdate2.get(Calendar.YEAR));
+            monthstart = String.format(Locale.US, "%d/%d/%d", nowdate2.get(Calendar.MONTH), nowdate2.get(Calendar.DATE), nowdate2.get(Calendar.YEAR));
         }
         monthdays[dayofmonth] = "1";
-        currMD = "";
+        StringBuilder newMDString = new StringBuilder("");
         for (int i=0; i<31; i++) {
-            currMD += monthdays[i] + ",";
+            newMDString.append(monthdays[i]);
+            newMDString.append(",");
         }
+        currMD = newMDString.toString();
         int presentMonthTime = Integer.parseInt(currMT);
         presentMonthTime += totaltime;
         currMT = "" + presentMonthTime;

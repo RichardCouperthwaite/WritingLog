@@ -1,33 +1,24 @@
 package edu.tamu.richardcouperthwaite.writinglog.adapters;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
-import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.lang.ref.WeakReference;
 import java.util.List;
-
 import edu.tamu.richardcouperthwaite.writinglog.R;
-import edu.tamu.richardcouperthwaite.writinglog.activities.MainActivity;
-import edu.tamu.richardcouperthwaite.writinglog.activities.ProjectList;
 import edu.tamu.richardcouperthwaite.writinglog.activities.WritingSession;
 import edu.tamu.richardcouperthwaite.writinglog.activities.editProjectDetails;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
-
-import static android.support.v4.content.ContextCompat.startActivities;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.ProjectViewHolder> {
@@ -78,21 +69,19 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
 
     public projectListAdapter(Context context) {mInflater = LayoutInflater.from(context); }
 
+    @NonNull
     @Override
-    public ProjectViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ProjectViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = mInflater.inflate(R.layout.project_item, parent, false);
         return new ProjectViewHolder(itemView);
     }
 
     @Override
-    public void onBindViewHolder(ProjectViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ProjectViewHolder holder, int position) {
         if (mProjectList != null) {
             Project current = mProjectList.get(position);
             holder.titleView.setText(current.getName());
             holder.description.setText(current.getDescription());
-        } else {
-            holder.titleView.setText("Test");
-            holder.description.setText("Test Project");
         }
     }
 

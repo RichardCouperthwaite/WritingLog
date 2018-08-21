@@ -1,26 +1,15 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
-import android.app.DownloadManager;
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -50,11 +39,11 @@ public class StatisticsActivity extends AppCompatActivity {
     @BindView(R.id.tvprevtimeweek)
     TextView tvprevtimeweek;
 
-    private statViewModel mstatViewModel;
     private sessionViewModel msessViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        statViewModel mstatViewModel;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_statistics);
         ButterKnife.bind(this);
@@ -86,42 +75,44 @@ public class StatisticsActivity extends AppCompatActivity {
         int currentWeekDays = 0;
         int currentMonthDays = 0;
 
-        for (int i = 0; i < statistics.size(); i++) {
-            switch (statistics.get(i).getTitle()) {
-                case "CurrentWeekTime":
-                    currWT = statistics.get(i).getValue();
-                    break;
-                case "CurrentWeekDays":
-                    currWD = statistics.get(i).getValue();
-                    break;
-                case "PreviousWeekTime":
-                    prevWT = statistics.get(i).getValue();
-                    break;
-                case "PreviousWeekDays":
-                    prevWD = statistics.get(i).getValue();
-                    break;
-                case "CurrentMonthTime":
-                    currMT = statistics.get(i).getValue();
-                    break;
-                case "CurrentMonthDays":
-                    currMD = statistics.get(i).getValue();
-                    break;
-                case "PreviousMonthTime":
-                    prevMT = statistics.get(i).getValue();
-                    break;
-                case "PreviousMonthDays":
-                    prevMD = statistics.get(i).getValue();
-                    break;
-                case "CurrentDIM":
-                    currDIM = statistics.get(i).getValue();
-                    break;
-                case "PreviousDIM":
-                    prevDIM = statistics.get(i).getValue();
-                    break;
+        try {
+            for (int i = 0; i < statistics.size(); i++) {
+                switch (statistics.get(i).getTitle()) {
+                    case "CurrentWeekTime":
+                        currWT = statistics.get(i).getValue();
+                        break;
+                    case "CurrentWeekDays":
+                        currWD = statistics.get(i).getValue();
+                        break;
+                    case "PreviousWeekTime":
+                        prevWT = statistics.get(i).getValue();
+                        break;
+                    case "PreviousWeekDays":
+                        prevWD = statistics.get(i).getValue();
+                        break;
+                    case "CurrentMonthTime":
+                        currMT = statistics.get(i).getValue();
+                        break;
+                    case "CurrentMonthDays":
+                        currMD = statistics.get(i).getValue();
+                        break;
+                    case "PreviousMonthTime":
+                        prevMT = statistics.get(i).getValue();
+                        break;
+                    case "PreviousMonthDays":
+                        prevMD = statistics.get(i).getValue();
+                        break;
+                    case "CurrentDIM":
+                        currDIM = statistics.get(i).getValue();
+                        break;
+                    case "PreviousDIM":
+                        prevDIM = statistics.get(i).getValue();
+                        break;
+                }
             }
+        } catch (NullPointerException e) {
+            Toast.makeText(getApplicationContext(), "No statistics found!", Toast.LENGTH_SHORT).show();
         }
-
-
 
         String [] list1 = currMD.split(",");
         if (list1.length >= 31) {
@@ -142,13 +133,13 @@ public class StatisticsActivity extends AppCompatActivity {
         }
 
         tvcurrenttimeweek.setText(timeFormat(currWT));
-        tvcurrentdaysweek.setText(String.format("%d/7", currentWeekDays));
+        tvcurrentdaysweek.setText(String.format(Locale.US, "%d/7", currentWeekDays));
         tvprevtimeweek.setText(timeFormat(prevWT));
-        tvprevdaysweek.setText(prevWD + "/7");
+        tvprevdaysweek.setText(String.format(Locale.US, "%s/7", prevWD));
         tvcurrenttimemonth.setText(timeFormat(currMT));
-        tvcurrentdaysmonth.setText(String.format("%d/%s", currentMonthDays, currDIM));
+        tvcurrentdaysmonth.setText(String.format(Locale.US, "%d/%s", currentMonthDays, currDIM));
         tvprevtimemonth.setText(timeFormat(prevMT));
-        tvprevdaysmonth.setText(prevMD + "/" + prevDIM);
+        tvprevdaysmonth.setText(String.format(Locale.US, "%s/%s", prevMD, prevDIM));
     }
 
     public String timeFormat(String time) {
@@ -173,54 +164,27 @@ public class StatisticsActivity extends AppCompatActivity {
         msessViewModel.getSessionList().observe(this, new Observer<List<Session>>() {
             @Override
             public void onChanged(@Nullable List<Session> sessions) {
-                if (isExternalStorageWritable()) {
-                    String logData = "WritingLog.csv \nDate, Start Time, End Time, Total Time, Project Name, End of Session Comments \n";
+                StringBuilder logData = new StringBuilder("WritingLog.csv \nDate, Start Time, End Time, Total Time, Project Name, End of Session Comments \n");
+                if (sessions!=null) {
+                    for (int i = 0; i < sessions.size(); i++) {
+                        String logEntry = String.format("%s, %s, %s, %s, \"%s\",  \"%s\" \n", sessions.get(i).getDate(), sessions.get(i).getStart(), sessions.get(i).getEnd(), sessions.get(i).getTotal(), sessions.get(i).getProject(), sessions.get(i).getComments());
+                        logData.append(logEntry);
+                    }
                     try {
-                        for (int i = 0; i < sessions.size(); i++) {
-                            String logEntry = String.format("%s, %s, %s, %s, \"%s\",  \"%s\" \n", sessions.get(i).getDate(), sessions.get(i).getStart(), sessions.get(i).getEnd(), sessions.get(i).getTotal(), sessions.get(i).getProject(), sessions.get(i).getComments());
-                            logData += logEntry;
-                        }
-
                         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                         sharingIntent.setType("text/plain");
-                        sharingIntent.putExtra(Intent.EXTRA_TEXT, logData);
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, logData.toString());
                         startActivity(Intent.createChooser(sharingIntent, "Share Log Data"));
 
-                        //Toast.makeText(getApplicationContext(), "Writing Log Exported", Toast.LENGTH_LONG).show();
-
                     } catch (Exception e) {
-                        Toast.makeText(getApplicationContext(), "No Data in Writing Log: "+ e.getMessage(), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Could not export data at this time!", Toast.LENGTH_LONG).show();
                     }
                 } else {
-                    Toast.makeText(getApplicationContext(), "Could not save data at this time", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "No Data in Writing Log!", Toast.LENGTH_LONG).show();
                 }
+
             }
         });
 
-    }
-
-    public boolean isExternalStorageWritable() {
-        String state = Environment.getExternalStorageState();
-        if (Environment.MEDIA_MOUNTED.equals(state)) {
-            return true;
-        }
-        return false;
-    }
-
-    public File getLogFile(String albumName) throws IOException {
-        // Get the directory for the user's public pictures directory.
-        File file = new File(getApplicationContext().getFilesDir(), albumName);
-        //if (!file.mkdirs()) {
-        //    throw new IOException("Could not create directory " + file.toString());
-        //}
-        try {
-            if (file.exists()) {
-                file.delete();
-            }
-            file.createNewFile();
-        } catch (Exception e) {
-            throw new IOException("Failed to create file "+ e.getMessage());
-        }
-        return file;
     }
 }

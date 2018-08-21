@@ -4,15 +4,12 @@ package edu.tamu.richardcouperthwaite.writinglog.models;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
-import android.support.annotation.NonNull;
-
 import java.io.Serializable;
 
 @Entity(tableName = "project_list")
 public class Project implements Serializable{
 
     @PrimaryKey
-    @NonNull
     @ColumnInfo(typeAffinity = 3)
     private int ID;
 
@@ -31,12 +28,11 @@ public class Project implements Serializable{
 
     public void setDueDate(String dueDate) { DueDate = dueDate; }
 
-    @NonNull
     public int getID() {
         return ID;
     }
 
-    public void setID(@NonNull int ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 

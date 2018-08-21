@@ -1,22 +1,18 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
-import android.app.Application;
-import android.arch.lifecycle.Observer;
+
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -24,8 +20,6 @@ import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
-
-import static android.support.v4.content.ContextCompat.startActivity;
 
 public class newProject extends AppCompatActivity {
     @BindView(R.id.etProjName)
@@ -96,7 +90,6 @@ public class newProject extends AppCompatActivity {
         try {
             int month = Integer.parseInt(date[0]);
             int day = Integer.parseInt(date[1]);
-            int year = Integer.parseInt(date[2]);
             if (month>12) {
                 valid = 4;
             }
