@@ -101,16 +101,6 @@
             android:src="@drawable/chart_bar"
             android:minHeight="@dimen/ButtonHeight"/>
 
-        <ImageButton
-            android:id="@+id/btnSettings"
-            android:layout_width="0dp"
-            android:layout_height="32dp"
-            android:layout_weight="1"
-            android:background="@color/colorLightGrey"
-            android:contentDescription="@string/main.btn.settings"
-            android:onClick="viewSettings"
-            android:src="@drawable/settings_outline"
-            android:minHeight="@dimen/ButtonHeight"/>
     </LinearLayout>
 
 </RelativeLayout>

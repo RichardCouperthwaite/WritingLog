@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
-    tools:context=".activities.Statistics">
+    tools:context=".activities.StatisticsActivity">
 
     <LinearLayout
         android:id="@+id/linlayoutweekstat"
@@ -17,14 +17,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Weekly Statistics"
+            android:text="@string/weekly_statistics"
             android:gravity="center_horizontal"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDarkGrey"></View>
+            android:background="@color/colorDarkGrey" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Week Writing Time (min):"
+                android:text="@string/current_week_writing_time"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -44,7 +44,7 @@
                 android:id="@+id/tvcurrenttimeweek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                tools:text="0"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -62,7 +62,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Week Writing Days:"
+                android:text="@string/current_week_writing_days"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -71,7 +71,7 @@
                 android:id="@+id/tvcurrentdaysweek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4/7"
+                tools:text="0/7"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Week Writing Time (min):"
+                android:text="@string/previous_week_writing_time"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -98,7 +98,7 @@
                 android:id="@+id/tvprevtimeweek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10"
+                tools:text="0"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -116,7 +116,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Week Writing Days:"
+                android:text="@string/previous_week_writing_days"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -125,7 +125,7 @@
                 android:id="@+id/tvprevdaysweek"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="4/7"
+                tools:text="0/7"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -148,14 +148,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Monthly Statistics"
+            android:text="@string/monthly_statistics"
             android:gravity="center_horizontal"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/colorDarkGrey"></View>
+            android:background="@color/colorDarkGrey" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -166,7 +166,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Month Writing Time (min):"
+                android:text="@string/current_month_writing_time"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -175,7 +175,7 @@
                 android:id="@+id/tvcurrenttimemonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50"
+                tools:text="0"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -193,7 +193,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Month Writing Days:"
+                android:text="@string/current_month_writing_days"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -202,7 +202,7 @@
                 android:id="@+id/tvcurrentdaysmonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="15/31"
+                tools:text="0/.."
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -220,7 +220,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Month Writing Time (min):"
+                android:text="@string/previous_month_writing_time"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -229,7 +229,7 @@
                 android:id="@+id/tvprevtimemonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="50"
+                tools:text="0"
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -247,7 +247,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Month Writing Days:"
+                android:text="@string/previous_month_writing_days"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -256,7 +256,7 @@
                 android:id="@+id/tvprevdaysmonth"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="25/30"
+                tools:text="0/.."
                 android:textColor="@color/colorMedGrey"
                 android:layout_weight="1"
                 android:gravity="end"
@@ -271,7 +271,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linlayoutmonthstat"
-        android:text="Export All Writing Log Data"
+        android:text="@string/export_all_writing_log_data"
         android:textColor="@color/colorWhite"
         android:textStyle="bold"
         android:background="@color/colorMedGrey"

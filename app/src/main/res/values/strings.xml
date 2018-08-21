@@ -43,5 +43,17 @@
     <string name="ib_archive_project">Archive Project</string>
     <string name="ib_start_new_session">Start New Session</string>
     <string name="editprojTitle">Edit Project Details</string>
+    <string name="save_changes">Save Project Detail Changes</string>
+    <string name="weekly_statistics">Weekly Statistics</string>
+    <string name="current_week_writing_time">Current Week Writing Time:</string>
+    <string name="current_week_writing_days">Current Week Writing Days:</string>
+    <string name="previous_week_writing_time">Previous Week Writing Time:</string>
+    <string name="previous_week_writing_days">Previous Week Writing Days:</string>
+    <string name="monthly_statistics">Monthly Statistics</string>
+    <string name="current_month_writing_time">Current Month Writing Time:</string>
+    <string name="current_month_writing_days">Current Month Writing Days:</string>
+    <string name="previous_month_writing_time">Previous Month Writing Time:</string>
+    <string name="previous_month_writing_days">Previous Month Writing Days:</string>
+    <string name="export_all_writing_log_data">Export All Writing Log Data</string>
 
 </resources>

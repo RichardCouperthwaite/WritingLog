@@ -24,7 +24,6 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        />
         <activity
             android:name=".activities.ProjectList"
             android:label="@string/title_activity_project_list"
@@ -33,25 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        />
         <activity
-            android:name=".activities.Statistics"
+            android:name=".activities.StatisticsActivity"
             android:label="@string/title_activity_statistics"
             android:parentActivityName=".activities.MainActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".activities.MainActivity" />
         </activity>
-        />
-        <activity
-            android:name=".activities.Settings"
-            android:label="@string/title_activity_settings"
-            android:parentActivityName=".activities.MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".activities.MainActivity" />
-        </activity>
-        />
         <activity
             android:name=".activities.WritingSession"
             android:label="@string/title_activity_writing_session"
