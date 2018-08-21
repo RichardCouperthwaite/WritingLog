@@ -1,8 +1,11 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
+import android.app.DownloadManager;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -118,6 +121,8 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         }
 
+
+
         String [] list1 = currMD.split(",");
         if (list1.length >= 31) {
             for (int i = 0; i < 31; i++) {
@@ -136,14 +141,30 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         }
 
-        tvcurrenttimeweek.setText(currWT);
+        tvcurrenttimeweek.setText(timeFormat(currWT));
         tvcurrentdaysweek.setText(String.format("%d/7", currentWeekDays));
-        tvprevtimeweek.setText(prevWT);
+        tvprevtimeweek.setText(timeFormat(prevWT));
         tvprevdaysweek.setText(prevWD + "/7");
-        tvcurrenttimemonth.setText(currMT);
+        tvcurrenttimemonth.setText(timeFormat(currMT));
         tvcurrentdaysmonth.setText(String.format("%d/%s", currentMonthDays, currDIM));
-        tvprevtimemonth.setText(prevMT);
+        tvprevtimemonth.setText(timeFormat(prevMT));
         tvprevdaysmonth.setText(prevMD + "/" + prevDIM);
+    }
+
+    public String timeFormat(String time) {
+        String format = "%s:%s:%s";
+        int timeint = Integer.parseInt(time);
+        int hours = timeint/60;
+        int minutes = timeint-hours*60;
+        int days = hours/24;
+        hours = hours-days*24;
+        String min;
+        String hrs;
+        String dys;
+        if (minutes<10) { min = "0" + minutes; } else { min = "" + minutes; }
+        if (hours<10) { hrs = "0" + hours; } else { hrs = "" + hours; }
+        if (days<10) { dys = "0" + days; } else { dys = "" + days; }
+        return String.format(format, dys, hrs, min);
     }
 
     @OnClick(R.id.btnExportData)
@@ -153,21 +174,19 @@ public class StatisticsActivity extends AppCompatActivity {
             @Override
             public void onChanged(@Nullable List<Session> sessions) {
                 if (isExternalStorageWritable()) {
-                    String logData = "Date, Start Time, End Time, Total Time, Project Name, End of Session Comments \n";
+                    String logData = "WritingLog.csv \nDate, Start Time, End Time, Total Time, Project Name, End of Session Comments \n";
                     try {
                         for (int i = 0; i < sessions.size(); i++) {
                             String logEntry = String.format("%s, %s, %s, %s, \"%s\",  \"%s\" \n", sessions.get(i).getDate(), sessions.get(i).getStart(), sessions.get(i).getEnd(), sessions.get(i).getTotal(), sessions.get(i).getProject(), sessions.get(i).getComments());
                             logData += logEntry;
                         }
-                        FileOutputStream outputStream;
-                        try {
-                            outputStream = openFileOutput("WritingLog.csv", getApplicationContext().MODE_PRIVATE);
-                            outputStream.write(logData.getBytes());
-                            outputStream.close();
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        Toast.makeText(getApplicationContext(), "Writing Log Exported", Toast.LENGTH_LONG).show();
+
+                        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                        sharingIntent.setType("text/plain");
+                        sharingIntent.putExtra(Intent.EXTRA_TEXT, logData);
+                        startActivity(Intent.createChooser(sharingIntent, "Share Log Data"));
+
+                        //Toast.makeText(getApplicationContext(), "Writing Log Exported", Toast.LENGTH_LONG).show();
 
                     } catch (Exception e) {
                         Toast.makeText(getApplicationContext(), "No Data in Writing Log: "+ e.getMessage(), Toast.LENGTH_LONG).show();
@@ -186,5 +205,22 @@ public class StatisticsActivity extends AppCompatActivity {
             return true;
         }
         return false;
+    }
+
+    public File getLogFile(String albumName) throws IOException {
+        // Get the directory for the user's public pictures directory.
+        File file = new File(getApplicationContext().getFilesDir(), albumName);
+        //if (!file.mkdirs()) {
+        //    throw new IOException("Could not create directory " + file.toString());
+        //}
+        try {
+            if (file.exists()) {
+                file.delete();
+            }
+            file.createNewFile();
+        } catch (Exception e) {
+            throw new IOException("Failed to create file "+ e.getMessage());
+        }
+        return file;
     }
 }

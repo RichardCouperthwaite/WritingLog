@@ -85,7 +85,7 @@ public class WritingSession extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             project = (Project) extras.getSerializable("PROJECT");
-            int hours = (int) project.getTime()/60;
+            int hours = project.getTime()/60;
             int minutes = project.getTime()-60*hours;
             String hoursstring;
             String minutesstring;
@@ -259,10 +259,10 @@ public class WritingSession extends AppCompatActivity {
         String [] dateSplit = date.split("/");
         String [] weekSplit = weekstart.split("/");
         String [] monthSplit = monthstart.split("/");
-        nowdate1.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]));
-        nowdate2.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0]), Integer.parseInt(dateSplit[1]));
-        weekdate.set(Integer.parseInt(weekSplit[2]), Integer.parseInt(weekSplit[0]), Integer.parseInt(weekSplit[1]));
-        monthdate.set(Integer.parseInt(monthSplit[2]), Integer.parseInt(monthSplit[0]), Integer.parseInt(monthSplit[1]));
+        nowdate1.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0])-1, Integer.parseInt(dateSplit[1]));
+        nowdate2.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0])-1, Integer.parseInt(dateSplit[1]));
+        weekdate.set(Integer.parseInt(weekSplit[2]), Integer.parseInt(weekSplit[0])-1, Integer.parseInt(weekSplit[1]));
+        monthdate.set(Integer.parseInt(monthSplit[2]), Integer.parseInt(monthSplit[0])-1, Integer.parseInt(monthSplit[1]));
         int dayofWeek = nowdate1.get(Calendar.DAY_OF_WEEK) -1;
         int dayofmonth = nowdate1.get(Calendar.DATE) -1;
         nowdate1.add(Calendar.DATE, (-1)*dayofWeek);

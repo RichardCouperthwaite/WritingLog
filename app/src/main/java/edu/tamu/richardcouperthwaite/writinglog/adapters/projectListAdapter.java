@@ -56,16 +56,13 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
         @Override
         public void onClick(View view) {
             if (view.getId() == startSession.getId()) {
-                Toast.makeText(view.getContext(), "Start Session = "+ mProjectList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), WritingSession.class);
                 intent.putExtra("PROJECT", mProjectList.get(getAdapterPosition()));
                 Context context = view.getContext();
                 startActivity(context, intent, Bundle.EMPTY);
             } else if(view.getId() == deleteProject.getId()) {
-                Toast.makeText(view.getContext(), "Delete Project = " + mProjectList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 checkDelete(view.getContext(), getAdapterPosition());
             } else if(view.getId() == editProject.getId()) {
-                Toast.makeText(view.getContext(), "Edit Project = " + mProjectList.get(getAdapterPosition()).getName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(view.getContext(), editProjectDetails.class);
                 intent.putExtra("PROJECT", mProjectList.get(getAdapterPosition()));
                 Context context = view.getContext();

@@ -35,7 +35,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Week Writing Time (min):"
+                android:text="Current Week Writing Time:"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -89,7 +89,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Week Writing Time (min):"
+                android:text="Previous Week Writing Time:"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -166,7 +166,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Current Month Writing Time (min):"
+                android:text="Current Month Writing Time:"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
@@ -220,7 +220,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Previous Month Writing Time (min):"
+                android:text="Previous Month Writing Time:"
                 android:textColor="@color/colorMaroon"
                 android:layout_weight="2"
                 android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />

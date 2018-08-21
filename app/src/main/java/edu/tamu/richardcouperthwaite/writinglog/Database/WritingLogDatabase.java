@@ -72,21 +72,7 @@ public abstract class WritingLogDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params)  {
-            /*if (statDao.getAllStats() == null) {
-                statDao.insert(new Statistics("CurrentWeekTime", "0"));
-                statDao.insert(new Statistics("CurrentWeekDays", "0,0,0,0,0,0,0"));
-                statDao.insert(new Statistics("PreviousWeekTime", "0"));
-                statDao.insert(new Statistics("PreviousWeekDays", "0"));
-                statDao.insert(new Statistics("CurrentMonthTime", "0"));
-                statDao.insert(new Statistics("CurrentMonthDays", "0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0"));
-                statDao.insert(new Statistics("PreviousMonthTime", "0"));
-                statDao.insert(new Statistics("PreviousMonthDays", "0"));
-                statDao.insert(new Statistics("CurrentDIM", "0"));
-                statDao.insert(new Statistics("PreviousDIM", "0"));
-                statDao.insert(new Statistics("WeekStart", firstdayofweek));
-                statDao.insert(new Statistics("MonthStart", firstdayofmonth));
-            } */
-            statDao.updateStats(new Statistics("CurrentWeekTime", "0"));
+
             return null;
         }
 
