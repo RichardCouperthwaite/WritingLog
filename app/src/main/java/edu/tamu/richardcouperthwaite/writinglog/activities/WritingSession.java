@@ -124,18 +124,20 @@ public class WritingSession extends AppCompatActivity {
 
     @OnClick(R.id.startSess)
     public void startSession() {
-        Calendar calendar = Calendar.getInstance();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
-        SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
-        date = dateFormat.format(calendar.getTime());
-        starttime = timeFormat.format(calendar.getTime());
-        String timearray[] = starttime.split(":");
-        hourstart = Integer.parseInt(timearray[0]);
-        minutestart = Integer.parseInt(timearray[1]);
-        timer.setTextColor(Color.parseColor("#5B6236"));
-        timer.setBase(SystemClock.elapsedRealtime());
-        timer.start();
-        SessStart = true;
+        if (SessStart == false) {
+            Calendar calendar = Calendar.getInstance();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy", Locale.US);
+            SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm", Locale.US);
+            date = dateFormat.format(calendar.getTime());
+            starttime = timeFormat.format(calendar.getTime());
+            String timearray[] = starttime.split(":");
+            hourstart = Integer.parseInt(timearray[0]);
+            minutestart = Integer.parseInt(timearray[1]);
+            timer.setTextColor(Color.parseColor("#5B6236"));
+            timer.setBase(SystemClock.elapsedRealtime());
+            timer.start();
+            SessStart = true;
+        }
     }
 
     @OnClick(R.id.endSess)
@@ -284,7 +286,7 @@ public class WritingSession extends AppCompatActivity {
         nowdate1.add(Calendar.DATE, (-1)*dayofWeek);
         nowdate2.add(Calendar.DATE, (-1)*dayofmonth);
         //update values for week stats
-        if (nowdate1.compareTo(weekdate) != 0) {
+        if (nowdate1.compareTo(weekdate) > 7) {
             int count = 0;
             for (int i=0; i<7; i++) {
                 if (weekdays[i].equals("1")) {
@@ -308,7 +310,7 @@ public class WritingSession extends AppCompatActivity {
         presentWeekTime += totaltime;
         currWT = "" + presentWeekTime;
         //update values for month stats
-        if (nowdate2.compareTo(monthdate) != 0) {
+        if (nowdate2.get(Calendar.MONTH) < monthdate.get(Calendar.MONTH)) {
             int count = 0;
             for (int i=0; i<31; i++) {
                 if (monthdays[i].equals("1")) {
