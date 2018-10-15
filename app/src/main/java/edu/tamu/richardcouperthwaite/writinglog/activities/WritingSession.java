@@ -15,6 +15,7 @@ import android.text.InputType;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -279,14 +280,22 @@ public class WritingSession extends AppCompatActivity {
         String [] monthSplit = monthstart.split("/");
         nowdate1.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0])-1, Integer.parseInt(dateSplit[1]));
         nowdate2.set(Integer.parseInt(dateSplit[2]), Integer.parseInt(dateSplit[0])-1, Integer.parseInt(dateSplit[1]));
-        weekdate.set(Integer.parseInt(weekSplit[2]), Integer.parseInt(weekSplit[0])-1, Integer.parseInt(weekSplit[1]));
+        weekdate.set(Integer.parseInt(weekSplit[2]), Integer.parseInt(weekSplit[0]), Integer.parseInt(weekSplit[1]));
         monthdate.set(Integer.parseInt(monthSplit[2]), Integer.parseInt(monthSplit[0])-1, Integer.parseInt(monthSplit[1]));
         int dayofWeek = nowdate1.get(Calendar.DAY_OF_WEEK) -1;
         int dayofmonth = nowdate1.get(Calendar.DATE) -1;
         nowdate1.add(Calendar.DATE, (-1)*dayofWeek);
         nowdate2.add(Calendar.DATE, (-1)*dayofmonth);
         //update values for week stats
-        if (nowdate1.compareTo(weekdate) > 7) {
+        //String date1 = "" + nowdate1.get(Calendar.MONTH) + "/" + nowdate1.get(Calendar.DATE) + "/" + nowdate1.get(Calendar.YEAR);
+        //String date2 = "" + nowdate2.get(Calendar.MONTH) + "/" + nowdate2.get(Calendar.DATE) + "/" + nowdate2.get(Calendar.YEAR);
+        //String date3 = "" + weekdate.get(Calendar.MONTH) + "/" + weekdate.get(Calendar.DATE) + "/" + weekdate.get(Calendar.YEAR);
+        //String date4 = "" + monthdate.get(Calendar.MONTH) + "/" + monthdate.get(Calendar.DATE) + "/" + monthdate.get(Calendar.YEAR);
+        Integer sum1 = nowdate1.get(Calendar.DAY_OF_YEAR) - weekdate.get(Calendar.DAY_OF_YEAR);
+        Integer sum2 = (nowdate1.get(Calendar.YEAR)-monthdate.get(Calendar.YEAR)) + (nowdate1.get(Calendar.MONTH)-monthdate.get(Calendar.MONTH));
+        //String output = date1 + "---" + date2 + "---" + date3 + "---" + date4 + "----" + sum1 + "-----" + sum2;
+        //Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG).show();
+        if (sum1 > 6) {
             int count = 0;
             for (int i=0; i<7; i++) {
                 if (weekdays[i].equals("1")) {
@@ -310,7 +319,7 @@ public class WritingSession extends AppCompatActivity {
         presentWeekTime += totaltime;
         currWT = "" + presentWeekTime;
         //update values for month stats
-        if (nowdate2.get(Calendar.MONTH) < monthdate.get(Calendar.MONTH)) {
+        if (sum2 > 1) {
             int count = 0;
             for (int i=0; i<31; i++) {
                 if (monthdays[i].equals("1")) {
@@ -322,7 +331,7 @@ public class WritingSession extends AppCompatActivity {
             prevMT = currMT;
             currMT = "0";
             prevDIM = currDIM;
-            monthstart = String.format(Locale.US, "%d/%d/%d", nowdate2.get(Calendar.MONTH), nowdate2.get(Calendar.DATE), nowdate2.get(Calendar.YEAR));
+            monthstart = String.format(Locale.US, "%d/%d/%d", nowdate2.get(Calendar.MONTH), 1, nowdate2.get(Calendar.YEAR));
         }
         monthdays[dayofmonth] = "1";
         StringBuilder newMDString = new StringBuilder("");
