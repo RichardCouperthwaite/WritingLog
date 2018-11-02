@@ -293,6 +293,7 @@ public class WritingSession extends AppCompatActivity {
         //String date4 = "" + monthdate.get(Calendar.MONTH) + "/" + monthdate.get(Calendar.DATE) + "/" + monthdate.get(Calendar.YEAR);
         Integer sum1 = nowdate1.get(Calendar.DAY_OF_YEAR) - weekdate.get(Calendar.DAY_OF_YEAR);
         Integer sum2 = (nowdate1.get(Calendar.YEAR)-monthdate.get(Calendar.YEAR)) + (nowdate1.get(Calendar.MONTH)-monthdate.get(Calendar.MONTH));
+        //sum2 = 2;
         //String output = date1 + "---" + date2 + "---" + date3 + "---" + date4 + "----" + sum1 + "-----" + sum2;
         //Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG).show();
         if (sum1 > 6) {
@@ -332,6 +333,8 @@ public class WritingSession extends AppCompatActivity {
             currMT = "0";
             prevDIM = currDIM;
             monthstart = String.format(Locale.US, "%d/%d/%d", nowdate2.get(Calendar.MONTH), 1, nowdate2.get(Calendar.YEAR));
+            //String output = "" + prevMD + "-" + prevMT + "-" + currMT +"-"+currMD;
+            //Toast.makeText(getApplicationContext(), output, Toast.LENGTH_LONG).show();
         }
         monthdays[dayofmonth] = "1";
         StringBuilder newMDString = new StringBuilder("");
