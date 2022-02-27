@@ -1,18 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="primaryMaroon">#500000</color>
     <color name="colorPrimaryDark">#332C2C</color>
     <color name="colorAccent">#FFFFFF</color>
 
     <color name="colorMaroon">#500000</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlue">#003C71</color>
-    <color name="colorGreen">#5B6236</color>
-    <color name="colorBrown">#744F28</color>
     <color name="colorTan">#998542</color>
     <color name="colorDarkGrey">#332C2C</color>
     <color name="colorMedGrey">#707373</color>
     <color name="colorLightGrey">#D6D3C4</color>
-    <color name="colorAccentYellow">#FCE300</color>
     <color name="colorAccentRed">#E4002B</color>
 </resources>

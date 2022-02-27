@@ -4,38 +4,23 @@
     <string name="main.btn.continue">Continue with an existing project</string>
     <string name="main.btn.new">Start a new project</string>
     <string name="main.btn.freewrite">Just Write!</string>
-    <string name="main.btn.settings">Settings</string>
     <string name="main.btn.reports">Writing Statistics</string>
-    <string name="main.btn.projList">Project List</string>
     <string name="title_activity_writing_session">Current Writing Session</string>
     <string name="title_activity_new_project">Create New Project</string>
-    <string name="title_activity_settings">Settings</string>
     <string name="title_activity_statistics">Statistics</string>
     <string name="title_activity_project_list">Project List</string>
-    <string name="Sess.title">Current Writing Session</string>
     <string name="sess.projTimeLabel">Current Time spent on Project</string>
     <string name="sess.projName">Project Name Goes Here</string>
     <string name="sess.projTime">00:00</string>
     <string name="sess.lastcommentlabel">Last Comment on Project:</string>
     <string name="sess.lastcomment">Last Comment goes here</string>
-    <string name="sess.currentTime">00:00</string>
     <string name="sess.startButton">Start or pause current session</string>
     <string name="sess.stopButton">Finish current session</string>
     <string name="sess.lastSessComm">Comments from last session to assist the user</string>
-    <string name="newP.title">Create New Project</string>
     <string name="newP.hint.projName">Enter Project Name</string>
     <string name="newP.hint.projDesc">Enter Project Description</string>
-    <string name="newP.hint.projDate">Enter Project Due Date (MM/DD/YYYY)</string>
     <string name="newP.btn.CreateandStartSess">Start Writing Session with New Project</string>
     <string name="newP.btn.CreateReturn">Create Project and Return to Main Menu</string>
-    <string name="projList.title">Project List</string>
-
-    <string name="stats.title">Writing Statistics</string>
-
-    <string name="set.title">Settings</string>
-    <string name="set.label.weekstart">Select first day of the week:</string>
-    <string name="set.rb.weekstart.sunday">Sunday</string>
-    <string name="set.rb.weekstart.monday">Monday</string>
 
     <string name="project_title">Project Title</string>
     <string name="this_is_a_sample_project_description">This is a sample project descriptioni</string>

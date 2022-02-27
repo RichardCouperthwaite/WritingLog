@@ -5,8 +5,7 @@
     android:layout_height="wrap_content"
     android:fillViewport="true">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorLightGrey"
@@ -277,15 +276,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linlayoutmonthstat"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorMaroon"
         android:text="@string/export_all_writing_log_data"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:background="@color/colorMedGrey"
-        android:layout_marginTop="64dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        />
+        android:textStyle="bold" />
 
 </RelativeLayout>
 </ScrollView>

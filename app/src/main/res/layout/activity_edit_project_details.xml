@@ -5,9 +5,8 @@
     android:layout_height="wrap_content"
     android:fillViewport="true">
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
+<RelativeLayout
+    android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/colorLightGrey"
 tools:context=".activities.editProjectDetails">
@@ -16,7 +15,7 @@ tools:context=".activities.editProjectDetails">
     android:id="@+id/etEditProjName"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:gravity="center_vertical"
+    android:gravity="center_horizontal"
     android:textAlignment="center"
     android:textStyle="bold"
     android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
@@ -54,30 +53,30 @@ tools:context=".activities.editProjectDetails">
         android:text="Select Project Due Date"
         android:textAlignment="center" />
 
-<CalendarView
-    android:id="@+id/dtCalendar2"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/etEditProjDesc"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginTop="16dp"
-    android:layout_centerHorizontal="true" />
+    <CalendarView
+        android:id="@+id/dtCalendar2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEditProjDesc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:theme="@style/Theme.MyApplication" />
 
-<Button
-    android:id="@+id/btnEditProject"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/dtCalendar2"
-    android:text="@string/save_changes"
-    android:textColor="@color/colorWhite"
-    android:textStyle="bold"
-    android:background="@color/colorMedGrey"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    />
+    <Button
+        android:id="@+id/btnEditProject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dtCalendar2"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@color/colorMaroon"
+        android:text="@string/save_changes"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold" />
 
 
 

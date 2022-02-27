@@ -9,8 +9,8 @@ android {
         applicationId "edu.tamu.richardcouperthwaite.writinglog"
         minSdk 29
         targetSdk 32
-        versionCode 5
-        versionName "1.4"
+        versionCode 6
+        versionName "2.1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
