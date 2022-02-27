@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,11 +24,24 @@
         android:gravity="center_horizontal"
         android:layout_marginBottom="8dp"/>
 
+    <TextView
+        android:id="@+id/dtDueDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/projName"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Due Date"
+        android:textAlignment="center"
+        android:textColor="@color/colorMaroon" />
+
     <LinearLayout
         android:id="@+id/sessLayout1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/projName"
+        android:layout_below="@+id/dtDueDate"
         android:layout_marginBottom="8dp">
 
         <TextView
@@ -92,11 +111,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/sepSesstime"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorAccentRed"
         android:gravity="center_horizontal"
-        />
+        android:textColor="@color/colorAccentRed"
+        android:textSize="50sp"
+        android:textStyle="bold" />
 
     <View
         android:id="@+id/sepSesstime2"
@@ -139,4 +157,7 @@
     </LinearLayout>
 
 
+
+
 </RelativeLayout>
+</ScrollView>

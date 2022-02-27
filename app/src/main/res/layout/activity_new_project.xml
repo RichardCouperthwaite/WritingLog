@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -37,34 +43,20 @@
         android:layout_marginEnd="8dp"
         />
 
-    <EditText
-        android:id="@+id/dtDueDate"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_below="@+id/etProjDesc"
-        android:inputType="date"
-        android:hint="@string/newP.hint.projDate"
-        android:gravity="center_vertical"
-        android:textAlignment="center"
-        android:background="@color/colorWhite"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"/>
-
     <Button
         android:id="@+id/btnCreateStart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/dtDueDate"
+        android:layout_below="@+id/dtCalendar"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorMedGrey"
         android:text="@string/newP.btn.CreateandStartSess"
         android:textColor="@color/colorWhite"
-        android:textStyle="bold"
-        android:background="@color/colorMedGrey"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        />
+        android:textStyle="bold" />
 
     <Button
         android:id="@+id/btnCreateReturn"
@@ -81,4 +73,32 @@
         android:layout_marginEnd="8dp"
         />
 
+    <CalendarView
+        android:id="@+id/dtCalendar"
+        android:layout_width="408dp"
+        android:layout_height="300dp"
+        android:layout_below="@+id/etProjDesc"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="0dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etProjDesc"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="8dp"
+        android:text="Select Project Due Date"
+        android:textAlignment="center"
+        android:textStyle="bold" />
+
 </RelativeLayout>
+</ScrollView>

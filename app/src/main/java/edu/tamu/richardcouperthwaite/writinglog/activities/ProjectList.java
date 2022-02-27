@@ -1,30 +1,34 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import java.util.List;
-import edu.tamu.richardcouperthwaite.writinglog.R;
-import edu.tamu.richardcouperthwaite.writinglog.adapters.projectListAdapter;
+
+import edu.tamu.richardcouperthwaite.writinglog.databinding.ActivityProjectListBinding;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
+import edu.tamu.richardcouperthwaite.writinglog.adapters.projectListAdapter;
+import edu.tamu.richardcouperthwaite.writinglog.R;
 
 public class ProjectList extends AppCompatActivity {
-
+    private ActivityProjectListBinding binding;
     RecyclerView recyclerView;
     private projViewModel mprojViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_project_list);
+        binding = ActivityProjectListBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mprojViewModel = ViewModelProviders.of(this).get(projViewModel.class);
-
+        mprojViewModel = new ViewModelProvider(this).get(projViewModel.class);
         recyclerView = findViewById(R.id.rvprojectlist);
         final projectListAdapter adapter = new projectListAdapter(this);
         recyclerView.setAdapter(adapter);

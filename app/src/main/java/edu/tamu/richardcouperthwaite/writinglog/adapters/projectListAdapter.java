@@ -1,31 +1,40 @@
 package edu.tamu.richardcouperthwaite.writinglog.adapters;
 
+
+import static androidx.core.content.ContextCompat.startActivity;
+
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.activities.WritingSession;
 import edu.tamu.richardcouperthwaite.writinglog.activities.editProjectDetails;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
-import static android.support.v4.content.ContextCompat.startActivity;
 
 public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.ProjectViewHolder> {
 
     class ProjectViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private final TextView titleView;
         private final TextView description;
+        private final TextView duedate;
         private final ImageButton startSession;
         private final ImageButton deleteProject;
         private final ImageButton editProject;
@@ -38,6 +47,7 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
             startSession = itemView.findViewById(R.id.ibstart);
             deleteProject = itemView.findViewById(R.id.ibarchive);
             editProject = itemView.findViewById(R.id.ibedit);
+            duedate = itemView.findViewById((R.id.tvDate));
 
             startSession.setOnClickListener(this);
             deleteProject.setOnClickListener(this);
@@ -48,14 +58,14 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
         public void onClick(View view) {
             if (view.getId() == startSession.getId()) {
                 Intent intent = new Intent(view.getContext(), WritingSession.class);
-                intent.putExtra("PROJECT", mProjectList.get(getAdapterPosition()));
+                intent.putExtra("PROJECT", mProjectList.get(getBindingAdapterPosition()));
                 Context context = view.getContext();
                 startActivity(context, intent, Bundle.EMPTY);
             } else if(view.getId() == deleteProject.getId()) {
-                checkDelete(view.getContext(), getAdapterPosition());
+                checkDelete(view.getContext(),getBindingAdapterPosition());
             } else if(view.getId() == editProject.getId()) {
                 Intent intent = new Intent(view.getContext(), editProjectDetails.class);
-                intent.putExtra("PROJECT", mProjectList.get(getAdapterPosition()));
+                intent.putExtra("PROJECT", mProjectList.get(getBindingAdapterPosition()));
                 Context context = view.getContext();
                 startActivity(context, intent, Bundle.EMPTY);
             }
@@ -82,6 +92,9 @@ public class projectListAdapter extends RecyclerView.Adapter<projectListAdapter.
             Project current = mProjectList.get(position);
             holder.titleView.setText(current.getName());
             holder.description.setText(current.getDescription());
+            long date = Long.parseLong(current.getDueDate());
+            String strDate = new SimpleDateFormat("dd MMM yyyy").format(new Date(date));
+            holder.duedate.setText(strDate);
         }
     }
 

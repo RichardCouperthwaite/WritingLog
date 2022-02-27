@@ -1,41 +1,44 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
-import android.os.SystemClock;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AlertDialog;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.InputType;
+import android.util.Log;
+import android.view.View;
 import android.widget.Chronometer;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import edu.tamu.richardcouperthwaite.writinglog.R;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.Session;
 import edu.tamu.richardcouperthwaite.writinglog.models.Statistics;
 import edu.tamu.richardcouperthwaite.writinglog.models.projViewModel;
-import edu.tamu.richardcouperthwaite.writinglog.models.sessionViewModel;
 import edu.tamu.richardcouperthwaite.writinglog.models.statViewModel;
+import edu.tamu.richardcouperthwaite.writinglog.models.sessionViewModel;
 
+import edu.tamu.richardcouperthwaite.writinglog.databinding.ActivityWritingSessionBinding;
 
 public class WritingSession extends AppCompatActivity {
+    private ActivityWritingSessionBinding binding;
     String starttime;
     String endtime;
     String date;
@@ -50,14 +53,6 @@ public class WritingSession extends AppCompatActivity {
     projViewModel viewModel;
     statViewModel statViewModel;
     sessionViewModel sessionViewModel;
-    @BindView(R.id.projName)
-    TextView projName;
-    @BindView(R.id.sessLastComment)
-    TextView comment;
-    @BindView(R.id.projTime)
-    TextView projTime;
-    @BindView(R.id.sessTimer)
-    Chronometer timer;
 
     String currWT;
     String currMT;
@@ -72,16 +67,15 @@ public class WritingSession extends AppCompatActivity {
     String currDIM;
     String prevDIM;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_writing_session);
-        ButterKnife.bind(this);
+        binding = ActivityWritingSessionBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        viewModel = ViewModelProviders.of(this).get(projViewModel.class);
-        statViewModel = ViewModelProviders.of(this).get(statViewModel.class);
-        sessionViewModel = ViewModelProviders.of(this).get(sessionViewModel.class);
+        viewModel = new ViewModelProvider(this).get(projViewModel.class);
+        statViewModel = new ViewModelProvider(this).get(statViewModel.class);
+        sessionViewModel = new ViewModelProvider(this).get(sessionViewModel.class);
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -102,18 +96,21 @@ public class WritingSession extends AppCompatActivity {
                     minutesstring = "" + minutes;
                 }
                 String timeSpent = String.format("%s:%s", hoursstring, minutesstring);
-                projName.setText(project.getName());
-                comment.setText(project.getLastComment());
-                projTime.setText(timeSpent);
+                binding.projName.setText(project.getName());
+                binding.sessLastComment.setText(project.getLastComment());
+                binding.projTime.setText(timeSpent);
+                long date = Long.parseLong(project.getDueDate());
+                String strDate = new SimpleDateFormat("dd MMM yyyy").format(new Date(date));
+                binding.dtDueDate.setText(strDate);
             }
         }
-
-        timer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
+/*
+        binding.sessTimer.setOnChronometerTickListener(new Chronometer.OnChronometerTickListener() {
             @Override
             public void onChronometerTick(Chronometer chronometer) {
-                timer = chronometer;
+                binding.sessTimer.setText((CharSequence) chronometer);
             }
-        });
+        });*/
 
         statViewModel.getStatList().observe(this, new Observer<List<Statistics>>() {
             @Override
@@ -121,9 +118,22 @@ public class WritingSession extends AppCompatActivity {
                 updateStats(statistics);
             }
         });
+
+        binding.startSess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startSession();
+            }
+        });
+
+        binding.endSess.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                endSession();
+            }
+        });
     }
 
-    @OnClick(R.id.startSess)
     public void startSession() {
         if (SessStart == false) {
             Calendar calendar = Calendar.getInstance();
@@ -134,14 +144,13 @@ public class WritingSession extends AppCompatActivity {
             String timearray[] = starttime.split(":");
             hourstart = Integer.parseInt(timearray[0]);
             minutestart = Integer.parseInt(timearray[1]);
-            timer.setTextColor(Color.parseColor("#5B6236"));
-            timer.setBase(SystemClock.elapsedRealtime());
-            timer.start();
+            binding.sessTimer.setTextColor(Color.parseColor("#5B6236"));
+            binding.sessTimer.setBase(SystemClock.elapsedRealtime());
+            binding.sessTimer.start();
             SessStart = true;
         }
     }
 
-    @OnClick(R.id.endSess)
     public void endSession() {
         if (SessStart) {
             Calendar calendar = Calendar.getInstance();
@@ -151,7 +160,7 @@ public class WritingSession extends AppCompatActivity {
             hourend = Integer.parseInt(timearray[0]);
             minuteend = Integer.parseInt(timearray[1]);
             totaltime = ((hourend-hourstart)*60 + minuteend-minutestart);
-            timer.stop();
+            binding.sessTimer.stop();
             SessStart = false;
             getComment(this);
         }
@@ -195,6 +204,8 @@ public class WritingSession extends AppCompatActivity {
     }
 
     private void updateStats(List<Statistics> statistics) {
+
+        Log.d("Test", "This is a test");
         if (statistics!=null) {
             for (int i = 0; i < statistics.size(); i++) {
                 switch (statistics.get(i).getTitle()) {
@@ -362,16 +373,3 @@ public class WritingSession extends AppCompatActivity {
         statViewModel.update(new Statistics("PreviousDIM", prevDIM));
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

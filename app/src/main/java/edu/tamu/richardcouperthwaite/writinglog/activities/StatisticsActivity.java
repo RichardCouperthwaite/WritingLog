@@ -1,54 +1,38 @@
 package edu.tamu.richardcouperthwaite.writinglog.activities;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.TextView;
+import android.view.View;
 import android.widget.Toast;
-import java.util.List;
-import java.util.Locale;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import edu.tamu.richardcouperthwaite.writinglog.R;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.google.android.material.snackbar.Snackbar;
+
 import edu.tamu.richardcouperthwaite.writinglog.models.Session;
 import edu.tamu.richardcouperthwaite.writinglog.models.Statistics;
 import edu.tamu.richardcouperthwaite.writinglog.models.sessionViewModel;
+import edu.tamu.richardcouperthwaite.writinglog.databinding.ActivityStatisticsBinding;
 import edu.tamu.richardcouperthwaite.writinglog.models.statViewModel;
 
+import java.util.List;
+import java.util.Locale;
 
 public class StatisticsActivity extends AppCompatActivity {
-    @BindView(R.id.tvcurrentdaysmonth)
-    TextView tvcurrentdaysmonth;
-    @BindView(R.id.tvcurrentdaysweek)
-    TextView tvcurrentdaysweek;
-    @BindView(R.id.tvcurrenttimemonth)
-    TextView tvcurrenttimemonth;
-    @BindView(R.id.tvcurrenttimeweek)
-    TextView tvcurrenttimeweek;
-    @BindView(R.id.tvprevdaysmonth)
-    TextView tvprevdaysmonth;
-    @BindView(R.id.tvprevdaysweek)
-    TextView tvprevdaysweek;
-    @BindView(R.id.tvprevtimemonth)
-    TextView tvprevtimemonth;
-    @BindView(R.id.tvprevtimeweek)
-    TextView tvprevtimeweek;
-
+    private ActivityStatisticsBinding binding;
     private sessionViewModel msessViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         statViewModel mstatViewModel;
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_statistics);
-        ButterKnife.bind(this);
+        binding = ActivityStatisticsBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mstatViewModel = ViewModelProviders.of(this).get(statViewModel.class);
+        mstatViewModel = new ViewModelProvider(this).get(statViewModel.class);
         mstatViewModel.getStatList().observe(this, new Observer<List<Statistics>>() {
             @Override
             public void onChanged(@Nullable List<Statistics> statistics) {
@@ -56,7 +40,14 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         });
 
-        msessViewModel = ViewModelProviders.of(this).get(sessionViewModel.class);
+        msessViewModel = new ViewModelProvider(this).get(sessionViewModel.class);
+
+        binding.btnExportData.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                saveLog();
+            }
+        });
 
 
     }
@@ -132,14 +123,14 @@ public class StatisticsActivity extends AppCompatActivity {
             }
         }
 
-        tvcurrenttimeweek.setText(timeFormat(currWT));
-        tvcurrentdaysweek.setText(String.format(Locale.US, "%d/7", currentWeekDays));
-        tvprevtimeweek.setText(timeFormat(prevWT));
-        tvprevdaysweek.setText(String.format(Locale.US, "%s/7", prevWD));
-        tvcurrenttimemonth.setText(timeFormat(currMT));
-        tvcurrentdaysmonth.setText(String.format(Locale.US, "%d/%s", currentMonthDays, currDIM));
-        tvprevtimemonth.setText(timeFormat(prevMT));
-        tvprevdaysmonth.setText(String.format(Locale.US, "%s/%s", prevMD, prevDIM));
+        binding.tvcurrenttimeweek.setText(timeFormat(currWT));
+        binding.tvcurrentdaysweek.setText(String.format(Locale.US, "%d/7", currentWeekDays));
+        binding.tvprevtimeweek.setText(timeFormat(prevWT));
+        binding.tvprevdaysweek.setText(String.format(Locale.US, "%s/7", prevWD));
+        binding.tvcurrenttimemonth.setText(timeFormat(currMT));
+        binding.tvcurrentdaysmonth.setText(String.format(Locale.US, "%d/%s", currentMonthDays, currDIM));
+        binding.tvprevtimemonth.setText(timeFormat(prevMT));
+        binding.tvprevdaysmonth.setText(String.format(Locale.US, "%s/%s", prevMD, prevDIM));
     }
 
     public String timeFormat(String time) {
@@ -158,7 +149,6 @@ public class StatisticsActivity extends AppCompatActivity {
         return String.format(format, dys, hrs, min);
     }
 
-    @OnClick(R.id.btnExportData)
     public void saveLog() {
 
         msessViewModel.getSessionList().observe(this, new Observer<List<Session>>() {

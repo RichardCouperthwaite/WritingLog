@@ -1,13 +1,14 @@
 package edu.tamu.richardcouperthwaite.writinglog.Repositories;
-
 import android.app.Application;
-import android.arch.lifecycle.LiveData;
 import android.os.AsyncTask;
+
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
+
 import edu.tamu.richardcouperthwaite.writinglog.Database.WritingLogDatabase;
 import edu.tamu.richardcouperthwaite.writinglog.interfaces.statsDao;
 import edu.tamu.richardcouperthwaite.writinglog.models.Statistics;
-
 
 public class statsRepository {
     private statsDao mstatsDao;

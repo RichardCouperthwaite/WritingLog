@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
@@ -37,25 +43,32 @@ tools:context=".activities.editProjectDetails">
     android:layout_marginEnd="8dp"
     />
 
-<EditText
-    android:id="@+id/etEditDueDate"
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/etEditProjDesc"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Select Project Due Date"
+        android:textAlignment="center" />
+
+<CalendarView
+    android:id="@+id/dtCalendar2"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="wrap_content"
     android:layout_below="@+id/etEditProjDesc"
-    android:inputType="date"
-    android:hint="@string/newP.hint.projDate"
-    android:gravity="center_vertical"
-    android:textAlignment="center"
-    android:background="@color/colorWhite"
-    android:layout_marginBottom="8dp"
     android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"/>
+    android:layout_marginEnd="8dp"
+    android:layout_marginTop="16dp"
+    android:layout_centerHorizontal="true" />
 
 <Button
     android:id="@+id/btnEditProject"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_below="@+id/etEditDueDate"
+    android:layout_below="@+id/dtCalendar2"
     android:text="@string/save_changes"
     android:textColor="@color/colorWhite"
     android:textStyle="bold"
@@ -66,4 +79,8 @@ tools:context=".activities.editProjectDetails">
     android:layout_marginEnd="8dp"
     />
 
+
+
+
 </RelativeLayout>
+</ScrollView>

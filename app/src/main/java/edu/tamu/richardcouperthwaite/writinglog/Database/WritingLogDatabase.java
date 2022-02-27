@@ -1,20 +1,22 @@
 package edu.tamu.richardcouperthwaite.writinglog.Database;
 
-import android.arch.persistence.db.SupportSQLiteDatabase;
-import android.arch.persistence.room.Database;
-import android.arch.persistence.room.Room;
-import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+import androidx.room.Database;
+import androidx.room.Room;
+import androidx.room.RoomDatabase;
+import androidx.sqlite.db.SupportSQLiteDatabase;
+
 import java.util.Calendar;
 import java.util.GregorianCalendar;
+
 import edu.tamu.richardcouperthwaite.writinglog.interfaces.ProjectDao;
 import edu.tamu.richardcouperthwaite.writinglog.interfaces.sessionDao;
 import edu.tamu.richardcouperthwaite.writinglog.interfaces.statsDao;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 import edu.tamu.richardcouperthwaite.writinglog.models.Session;
 import edu.tamu.richardcouperthwaite.writinglog.models.Statistics;
-
 
 @Database(entities = {Project.class, Statistics.class, Session.class}, version = 3, exportSchema = false)
 public abstract class WritingLogDatabase extends RoomDatabase {

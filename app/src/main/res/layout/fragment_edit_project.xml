@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".EditProjectFragment">
+
+        <EditText
+            android:id="@+id/etEditProjName"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorLightGrey"
+            android:gravity="center_vertical"
+            android:hint="@string/newP.hint.projName"
+            android:inputType="text"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/etEditProjDesc"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/etEditProjName"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorLightGrey"
+            android:gravity="start"
+            android:hint="@string/newP.hint.projDesc"
+            android:inputType="textMultiLine"
+            android:textAlignment="viewStart" />
+
+        <Button
+            android:id="@+id/btnEditProject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/calendarView2"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/colorMedGrey"
+            android:text="@string/save_changes"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <CalendarView
+            android:id="@+id/calendarView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etEditProjDesc"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorLightGrey" />
+
+    </RelativeLayout>
+</ScrollView>

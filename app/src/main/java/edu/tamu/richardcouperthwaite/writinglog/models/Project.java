@@ -1,13 +1,13 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import android.arch.persistence.room.ColumnInfo;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 import java.io.Serializable;
 
 @Entity(tableName = "project_list")
-public class Project implements Serializable{
+public class Project implements Serializable {
 
     @PrimaryKey
     @ColumnInfo(typeAffinity = 3)
@@ -28,45 +28,25 @@ public class Project implements Serializable{
 
     public void setDueDate(String dueDate) { DueDate = dueDate; }
 
-    public int getID() {
-        return ID;
-    }
+    public int getID() { return ID; }
 
-    public void setID(int ID) {
-        this.ID = ID;
-    }
+    public void setID(int ID) { this.ID = ID; }
 
-    public String getName() {
-        return Name;
-    }
+    public String getName() { return Name; }
 
-    public void setName(String name) {
-        Name = name;
-    }
+    public void setName(String name) { Name = name; }
 
-    public int getTime() {
-        return Time;
-    }
+    public int getTime() { return Time; }
 
-    public void setTime(int time) {
-        Time = time;
-    }
+    public void setTime(int time) { Time = time; }
 
-    public String getDescription() {
-        return Description;
-    }
+    public String getDescription() { return Description; }
 
-    public void setDescription(String description) {
-        Description = description;
-    }
+    public void setDescription(String description) { Description = description; }
 
-    public String getLastComment() {
-        return LastComment;
-    }
+    public String getLastComment() { return LastComment; }
 
-    public void setLastComment(String lastComment) {
-        LastComment = lastComment;
-    }
+    public void setLastComment(String lastComment) { LastComment = lastComment; }
 
     public Project(int ID, String Name, int Time, String Description, String LastComment, String DueDate) {
         this.ID = ID;

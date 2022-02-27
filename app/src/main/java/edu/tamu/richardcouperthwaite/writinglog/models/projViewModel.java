@@ -1,11 +1,14 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
-import java.util.List;
-import edu.tamu.richardcouperthwaite.writinglog.Repositories.projectRepository;
 
+import android.app.Application;
+
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
+import java.util.List;
+
+import edu.tamu.richardcouperthwaite.writinglog.Repositories.projectRepository;
 
 public class projViewModel extends AndroidViewModel {
     private projectRepository mRepository;

@@ -2,28 +2,63 @@ package edu.tamu.richardcouperthwaite.writinglog.activities;
 
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import butterknife.ButterKnife;
-import butterknife.OnClick;
-import edu.tamu.richardcouperthwaite.writinglog.R;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import edu.tamu.richardcouperthwaite.writinglog.databinding.ActivityMainBinding;
 import edu.tamu.richardcouperthwaite.writinglog.models.Project;
 
 public class MainActivity extends AppCompatActivity {
-    Project freewriteproject = new Project(0, "Just Write Session", 0, "No Comments from last session.", "", "");
+    private ActivityMainBinding binding;
+    long time = System.currentTimeMillis();
+    Project freewriteproject = new Project(0, "Just Write Session", 0, "No Comments from last session.", "", time+"");
     Context appcontext;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
         appcontext = this;
+
+        binding.btnFreeWrite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                goToSession(view);
+            }
+        });
+
+        binding.btnNew.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                createNewProject(view);
+            }
+        });
+
+        binding.btnContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewProjectList(view);
+            }
+        });
+
+        binding.btnRecords.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewStatistics(view);
+            }
+        });
+
+
     }
 
-    @OnClick(R.id.btnFreeWrite)
     public void goToSession(View view) {
         Intent intent = new Intent(this, WritingSession.class);
         intent.putExtra("PROJECT", freewriteproject);

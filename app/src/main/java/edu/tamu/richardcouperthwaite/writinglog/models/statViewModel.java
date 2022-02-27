@@ -1,9 +1,12 @@
 package edu.tamu.richardcouperthwaite.writinglog.models;
 
 import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.LiveData;
+
+import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
+
 import java.util.List;
+
 import edu.tamu.richardcouperthwaite.writinglog.Repositories.statsRepository;
 
 public class statViewModel extends AndroidViewModel {
